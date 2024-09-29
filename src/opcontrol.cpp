@@ -42,6 +42,25 @@ std::map<std::string, int> arcadeControl(void) {
 									  {"joystickThreshold", joystickThreshold}};
 }
 
+int batteryDisplay(int i) {
+	int batteryPercentage = pros::battery::get_capacity();
+	pros::screen::set_pen(batteryPercentage < 50   ? pros::Color::red
+						  : batteryPercentage < 75 ? pros::Color::yellow
+												   : pros::Color::green);
+	pros::screen::print(TEXT_LARGE_CENTER, i++, "Battery: %3d%%",
+						batteryPercentage);
+	i++;
+
+	int controllerBatteryPercentage = controller.get_battery_capacity();
+	pros::screen::set_pen(controllerBatteryPercentage < 50 ? pros::Color::red
+						  : controllerBatteryPercentage < 75
+							  ? pros::Color::yellow
+							  : pros::Color::green);
+	pros::screen::print(TEXT_MEDIUM_CENTER, i++, "Controller Battery: %3d%%",
+						controllerBatteryPercentage);
+	return i;
+}
+
 void opcontrol() {
 	while (true) {
 		// Prints status of the emulated screen LCDs
@@ -55,8 +74,12 @@ void opcontrol() {
 		// pros::screen::print(TEXT_MEDIUM, 2, "Hello, PROS User!");
 		// pros::screen::print(TEXT_MEDIUM, 3, "Hello, PROS User!");
 
-		std::map<std::string, int> values = arcadeControl();
 		int i = 0;
+		i = batteryDisplay(i);
+		i++;
+
+		std::map<std::string, int> values = arcadeControl();
+		pros::screen::set_pen(pros::Color::white);
 		for (auto const& [name, val] : values) {
 			pros::screen::print(TEXT_MEDIUM, i, "%s: %4d", name.c_str(), val);
 			i++;
