@@ -1,3 +1,6 @@
+#include <map>
+#include <vector>
+#include "configuration.hpp"
 #include "main.h"
 #include "setup-devices.hpp"
 /**
@@ -13,6 +16,32 @@
  * operator control task will be stopped. Re-enabling the robot will restart the
  * task, not resume it from where it left off.
  */
+
+std::map<std::string, int> arcadeControl(void) {
+	int direction =
+		controller.get_analog(ANALOG_LEFT_Y) * movementVelocityPercentage;
+	int turn =
+		controller.get_analog(ANALOG_RIGHT_X) * turningVelocityPercentage;
+
+	int joystickThreshold = joystickThresholdPercentage * 127;
+
+	if (controller.get_analog(ANALOG_LEFT_Y) < joystickThreshold &&
+		controller.get_analog(ANALOG_LEFT_Y) > -joystickThreshold)
+		direction = 0;
+
+	if (controller.get_analog(ANALOG_RIGHT_X) < joystickThreshold &&
+		controller.get_analog(ANALOG_RIGHT_X) > -joystickThreshold)
+		turn = 0;
+
+	leftMotorGroup.move(direction - turn);
+	rightMotorGroup.move(direction + turn);
+	return std::map<std::string, int>{{"direction", direction},
+									  {"turn", turn},
+									  {"leftMotorGroup", direction - turn},
+									  {"rightMotorGroup", direction + turn},
+									  {"joystickThreshold", joystickThreshold}};
+}
+
 void opcontrol() {
 	while (true) {
 		// Prints status of the emulated screen LCDs
@@ -22,15 +51,16 @@ void opcontrol() {
 		// 				 (pros::lcd::read_buttons() & LCD_BTN_RIGHT) >> 0);
 		//
 		// pros::lcd::print(2, "Testing Testing");
-		pros::screen::print(TEXT_MEDIUM, 1, "Hello, PROS User!");
-		pros::screen::print(TEXT_MEDIUM, 2, "Hello, PROS User!");
-		pros::screen::print(TEXT_MEDIUM, 3, "Hello, PROS User!");
+		// pros::screen::print(TEXT_MEDIUM, 1, "Hello, PROS User!");
+		// pros::screen::print(TEXT_MEDIUM, 2, "Hello, PROS User!");
+		// pros::screen::print(TEXT_MEDIUM, 3, "Hello, PROS User!");
 
-		// Arcade control scheme
-		int direction = controller.get_analog(ANALOG_LEFT_Y);
-		int turn = controller.get_analog(ANALOG_RIGHT_X);
-		leftMotorGroup.move(direction - turn);
-		rightMotorGroup.move(direction + turn);
+		std::map<std::string, int> values = arcadeControl();
+		int i = 0;
+		for (auto const& [name, val] : values) {
+			pros::screen::print(TEXT_MEDIUM, i, "%s: %4d", name.c_str(), val);
+			i++;
+		}
 
 		// Run for 20 ms then update
 		pros::delay(20);

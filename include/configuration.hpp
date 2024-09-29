@@ -7,11 +7,13 @@
 #include <vector>
 
 // Drivetrain
-extern int movementVelocity;  // 0 - 1
-extern int turningVelocity;	  // 0 - 1
+extern double movementVelocityPercentage;  // 0 - 1
+extern double turningVelocityPercentage;   // 0 - 1
+
+extern double joystickThresholdPercentage;	// 0 - 1
 
 // Intake
-extern int intakeVelocity;	// 0 - 1
+extern double intakeVelocity;  // 0 - 1
 
 // Port Numbers
 typedef enum {
@@ -22,6 +24,6 @@ typedef enum {
 	INERTIAL_SENSOR,
 } PortType;
 
-extern std::unordered_map<PortType, std::vector<std::int8_t>> motorPorts;
+extern std::unordered_map<PortType, std::vector<std::int8_t>> portNumbers;
 
 #endif	// _CONFIGURATION_HPP_
