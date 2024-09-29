@@ -1,6 +1,8 @@
 #include "setup-devices.hpp"
+#include "configuration.hpp"
 #include "main.h"
 
 pros::Controller controller(pros::E_CONTROLLER_MASTER);
-pros::MotorGroup leftMotorGroup({1, -2, 3});
-pros::MotorGroup rightMotorGroup({-4, 5, -6});
+
+pros::MotorGroup leftMotorGroup(motorPorts[PortType::LEFT_MOTORS]);
+pros::MotorGroup rightMotorGroup(motorPorts[PortType::RIGHT_MOTORS]);

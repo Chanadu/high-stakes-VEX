@@ -1,4 +1,5 @@
 #include "main.h"
+#include "configuration.hpp"
 #include "setup-devices.hpp"
 
 /**
