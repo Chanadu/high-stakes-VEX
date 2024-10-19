@@ -1,5 +1,6 @@
 #include "main.h"
 #include "configuration.hpp"
+#include "lemlib/api.hpp"  // IWYU pragma: keep
 #include "setup-devices.hpp"
 
 /**
@@ -25,9 +26,5 @@ void on_center_button() {
  * to keep execution time for this mode under a few seconds.
  */
 void initialize() {
-	pros::screen::set_pen(pros::Color::white);
-	// pros::lcd::initialize();
-	// pros::lcd::set_text(1, "Hello PROS User!");
-	//
-	// pros::lcd::register_btn1_cb(on_center_button);
+	initializeDevices();
 }
