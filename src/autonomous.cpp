@@ -1,4 +1,5 @@
 #include "main.h"
+#include "screen-displays.hpp"
 #include "setup-devices.hpp"
 /**
  * Runs the user autonomous code. This function will be started in its own task
@@ -11,4 +12,18 @@
  * will be stopped. Re-enabling the robot will restart the task, not re-start it
  * from where it left off.
  */
-void autonomous() {}
+
+// https://lemlib.readthedocs.io/en/stable/tutorials/4_pid_tuning.html
+void tuneAngularPID() {
+	chassis.setPose(0, 0, 0);
+	chassis.turnToHeading(90, 100000);
+}
+
+void autonomous() {
+	int i = 0;
+	pros::screen::print(TEXT_LARGE_CENTER, i++, "AUTON RUNNING");
+	++i;
+	i = batteryDisplay(i);
+
+	tuneAngularPID();
+}
