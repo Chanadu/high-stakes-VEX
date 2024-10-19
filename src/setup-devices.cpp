@@ -66,11 +66,21 @@ lemlib::ControllerSettings angularMovementController(
 	angularControllerSettings[MAXIMUM_ACCELERATION]	 //
 );
 
+lemlib::ExpoDriveCurve driveCurve(driveExpoDriveCurveSettings[DEADBAND],
+								  driveExpoDriveCurveSettings[MIN_OUTPUT],
+								  driveExpoDriveCurveSettings[CURVE]);
+
+lemlib::ExpoDriveCurve turnCurve(turnExpoDriveCurveSettings[DEADBAND],
+								 turnExpoDriveCurveSettings[MIN_OUTPUT],
+								 turnExpoDriveCurveSettings[CURVE]);
+
 // create the chassis
 lemlib::Chassis chassis(drivetrain,					// drivetrain settings
 						lateralMovementController,	// lateral PID settings
 						angularMovementController,	// angular PID settings
-						odomSensors					// odometry sensors
+						odomSensors,				// odometry sensors
+						&driveCurve,				// throttle curve
+						&turnCurve					// steering curve
 );
 
 void initializeDevices(void) {

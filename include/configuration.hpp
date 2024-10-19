@@ -37,6 +37,12 @@ typedef enum {
 	MAXIMUM_ACCELERATION,		// Slew
 } MovementControllerSettingsType;
 
+typedef enum {
+	DEADBAND,	 // Range where input is considered input
+	MIN_OUTPUT,	 // minimum output that can be returned
+	CURVE,		 // how "curved" the graph is
+} ExpoDriveCurveType;
+
 // Drivetrain Measurements
 extern double drivetrainTrackWidth;
 extern double drivetrainWheelbaseWidth;
@@ -55,12 +61,23 @@ extern std::unordered_map<MovementControllerSettingsType, float>
 	angularControllerSettings;
 
 // Drivetrain Movement
+extern double maxControllerValue;
+
 extern double movementVelocityPercentage;  // 0 - 1
 extern double turningVelocityPercentage;   // 0 - 1
 
-extern double joystickThresholdPercentage;	// 0 - 1
+extern double joystickThresholdPercentage;		  // 0 - 1
+extern double outputMovementThresholdPercentage;  // 0 - 1
+
+extern double driveExpoDriveCurveGain;
+extern double turnExpoDriveCurveGain;
 
 extern DrivetrainMovementType drivetrainMovementType;
+
+// Drivetrain Expo Drive Curves
+extern std::unordered_map<ExpoDriveCurveType, float>
+	driveExpoDriveCurveSettings;
+extern std::unordered_map<ExpoDriveCurveType, float> turnExpoDriveCurveSettings;
 
 // Intake
 extern double intakeVelocity;  // 0 - 1

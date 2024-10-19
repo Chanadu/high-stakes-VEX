@@ -39,9 +39,26 @@ std::unordered_map<MovementControllerSettingsType, float>
 		{LARGE_ERROR_RANGE, 3},	   {LARGE_ERROR_RANGE_TIMEOUT, 500},
 		{MAXIMUM_ACCELERATION, 0},
 };
+double maxControllerValue = 127.0;
 
 double movementVelocityPercentage = 1.0;
 double turningVelocityPercentage = 1.0;
-double joystickThresholdPercentage = 0.1;
+
+double joystickThresholdPercentage = 3.0 / maxControllerValue;
+double outputMovementThresholdPercentage = 10.0 / maxControllerValue;
+
+double driveExpoDriveCurveGain = 1.019;
+double turnExpoDriveCurveGain = 1.019;
+
+std::unordered_map<ExpoDriveCurveType, float> driveExpoDriveCurveSettings = {
+	{DEADBAND, joystickThresholdPercentage* maxControllerValue},
+	{MIN_OUTPUT, outputMovementThresholdPercentage* maxControllerValue},
+	{CURVE, driveExpoDriveCurveGain}};
+
+std::unordered_map<ExpoDriveCurveType, float> turnExpoDriveCurveSettings = {
+	{DEADBAND, joystickThresholdPercentage* maxControllerValue},
+	{MIN_OUTPUT, outputMovementThresholdPercentage* maxControllerValue},
+	{CURVE, turnExpoDriveCurveGain},
+};
 
 DrivetrainMovementType drivetrainMovementType = DOUBLE_STICK_ARCADE_MOVEMENT;
