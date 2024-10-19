@@ -84,6 +84,7 @@ lemlib::Chassis chassis(drivetrain,					// drivetrain settings
 );
 
 void initializeDevices(void) {
+	pros::lcd::initialize();
 	pros::screen::set_pen(pros::Color::white);
 	chassis.calibrate();  // Setup Sensors
 						  // pros::lcd::initialize();

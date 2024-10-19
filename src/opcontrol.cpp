@@ -69,25 +69,6 @@ void doubleStickCurvatureControl(void) {
 	chassis.curvature(leftY, rightX);
 }
 
-// int batteryDisplay(int i) {
-// 	int batteryPercentage = pros::battery::get_capacity();
-// 	pros::screen::set_pen(batteryPercentage < 50   ? pros::Color::red
-// 						  : batteryPercentage < 75 ? pros::Color::yellow
-// 												   : pros::Color::green);
-// 	pros::screen::print(TEXT_LARGE_CENTER, i++, "Battery: %3d%%",
-// 						batteryPercentage);
-// 	++i;
-//
-// 	int controllerBatteryPercentage = controller.get_battery_capacity();
-// 	pros::screen::set_pen(controllerBatteryPercentage < 50 ? pros::Color::red
-// 						  : controllerBatteryPercentage < 75
-// 							  ? pros::Color::yellow
-// 							  : pros::Color::green);
-// 	pros::screen::print(TEXT_MEDIUM_CENTER, i++, "Controller Battery: %3d%%",
-// 						controllerBatteryPercentage);
-// 	return i;
-// }
-
 int chassisPositionDisplay(int i) {
 	pros::screen::print(TEXT_MEDIUM, i++, "Drivetrain X: %5.2f",
 						chassis.getPose().x);
@@ -98,19 +79,47 @@ int chassisPositionDisplay(int i) {
 	return i;
 }
 
+int drivetrainMovementTypeButton(int i) {
+	pros::lcd::register_btn1_cb([]() {
+		int movementType = drivetrainMovementType;
+		movementType++;
+		drivetrainMovementType =
+			static_cast<DrivetrainMovementType>(movementType % 5);
+		return;
+	});
+	// pros::screen::print(TEXT_MEDIUM, i++, "DrivetrainMovementType: %d",
+	// 					drivetrainMovementType);
+	pros::screen::print(TEXT_MEDIUM, i, "%100s", "");
+	switch (drivetrainMovementType) {
+		case TANK_MOVEMENT:
+			pros::screen::print(TEXT_MEDIUM_CENTER, i++, "Tank Movement");
+			break;
+		case SINGLE_STICK_ARCADE_MOVEMENT:
+			pros::screen::print(TEXT_MEDIUM_CENTER, i++,
+								"Single Stick Arcade Movement");
+			break;
+		case DOUBLE_STICK_ARCADE_MOVEMENT:
+			pros::screen::print(TEXT_MEDIUM_CENTER, i++,
+								"Double Stick Arcade Movement");
+			break;
+		case SINGLE_STICK_CURVATURE_MOVEMENT:
+			pros::screen::print(TEXT_MEDIUM_CENTER, i++,
+								"Single Stick Curvature Movement");
+			break;
+		case DOUBLE_STICK_CURVATURE_MOVEMENT:
+			pros::screen::print(TEXT_MEDIUM_CENTER, i++,
+								"Double Stick Curvature Movement");
+			break;
+	}
+	return i;
+}
+
 void opcontrol() {
 	while (true) {
 		int i = 0;
-		i = batteryDisplay(i);
-		++i;
+		i = batteryDisplay(i++);
+		i = drivetrainMovementTypeButton(i);
 
-		// std::map<std::string, int> values = arcadeControl();
-		// pros::screen::set_pen(pros::Color::white);
-		// for (auto const& [name, val] : values) {
-		// 	pros::screen::print(TEXT_MEDIUM, i++, "%s: %4d", name.c_str(), val);
-		// }
-
-		// pros::screen::print(TEXT_MEDIUM, i++, "Testing");
 		switch (drivetrainMovementType) {
 			case TANK_MOVEMENT:
 				tankControl();
@@ -129,6 +138,7 @@ void opcontrol() {
 				break;
 		}
 
+		// pros::screen::print(TEXT_MEDIUM, i++, "Testing");
 		pros::delay(20);
 	}
 }
