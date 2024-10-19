@@ -19,6 +19,11 @@ void tuneAngularPID() {
 	chassis.turnToHeading(90, 100000);
 }
 
+void tuneLateralPID() {
+	chassis.setPose(0, 0, 0);
+	chassis.moveToPoint(0, 48, 100000);
+}
+
 void autonomous() {
 	int i = 0;
 	pros::screen::print(TEXT_LARGE_CENTER, i++, "AUTON RUNNING");
@@ -26,4 +31,5 @@ void autonomous() {
 	i = batteryDisplay(i);
 
 	tuneAngularPID();
+	// tuneLateralPID();
 }
