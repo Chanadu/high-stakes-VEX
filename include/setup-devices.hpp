@@ -4,6 +4,7 @@
 #include "lemlib/api.hpp"
 #include "main.h"
 
+namespace Devices {
 extern pros::Controller controller;
 extern pros::MotorGroup leftMotorGroup;
 extern pros::MotorGroup rightMotorGroup;
@@ -22,6 +23,7 @@ extern lemlib::ControllerSettings angularMovementController;
 
 extern lemlib::Chassis chassis;
 
-extern void initializeDevices(void);
+extern pros::adi::DigitalOut mogoHolderPiston;
+}  // namespace Devices
 
 #endif	// _SETUP_DEVICES_HPP

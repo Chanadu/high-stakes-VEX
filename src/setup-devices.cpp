@@ -3,12 +3,13 @@
 #include "lemlib/api.hpp"
 #include "main.h"
 
+namespace Devices {
 pros::Controller controller(pros::E_CONTROLLER_MASTER);
 
-pros::MotorGroup leftMotorGroup(portNumbers[PortType::LEFT_MOTORS],
-								portGearsets[PortType::LEFT_MOTORS]);
-pros::MotorGroup rightMotorGroup(portNumbers[PortType::RIGHT_MOTORS],
-								 portGearsets[PortType::RIGHT_MOTORS]);
+pros::MotorGroup leftMotorGroup(portNumbers[Port::LEFT_MOTORS],
+								portGearsets[Port::LEFT_MOTORS]);
+pros::MotorGroup rightMotorGroup(portNumbers[Port::RIGHT_MOTORS],
+								 portGearsets[Port::RIGHT_MOTORS]);
 
 lemlib::Drivetrain drivetrain(&leftMotorGroup,
 							  &rightMotorGroup,
@@ -17,7 +18,7 @@ lemlib::Drivetrain drivetrain(&leftMotorGroup,
 							  drivetrainWheelRPM,
 							  drivetrainHorizontalDrift);
 
-pros::Imu imu(portNumbers[PortType::INERTIAL_SENSOR][0]);
+pros::Imu imu(portNumbers[Port::INERTIAL_SENSOR][0]);
 // Could add more tracking items here
 //
 // pros::Rotation horizontalEncoder(20);
@@ -42,37 +43,45 @@ lemlib::OdomSensors odomSensors(
 
 // lateral PID controller
 lemlib::ControllerSettings lateralMovementController(
-	lateralControllerSettings[PROPORTIONAL_GAIN],
-	lateralControllerSettings[INTEGRAL_GAIN],
-	lateralControllerSettings[DERIVATIVE_GAIN],
-	lateralControllerSettings[ANTI_WINDUP],
-	lateralControllerSettings[SMALL_ERROR_RANGE],
-	lateralControllerSettings[SMALL_ERROR_RANGE_TIMEOUT],
-	lateralControllerSettings[LARGE_ERROR_RANGE],
-	lateralControllerSettings[LARGE_ERROR_RANGE_TIMEOUT],
-	lateralControllerSettings[MAXIMUM_ACCELERATION]	 //
+	lateralControllerSettings[MovementControllerSettings::PROPORTIONAL_GAIN],
+	lateralControllerSettings[MovementControllerSettings::INTEGRAL_GAIN],
+	lateralControllerSettings[MovementControllerSettings::DERIVATIVE_GAIN],
+	lateralControllerSettings[MovementControllerSettings::ANTI_WINDUP],
+	lateralControllerSettings[MovementControllerSettings::SMALL_ERROR_RANGE],
+	lateralControllerSettings
+		[MovementControllerSettings::SMALL_ERROR_RANGE_TIMEOUT],
+	lateralControllerSettings[MovementControllerSettings::LARGE_ERROR_RANGE],
+	lateralControllerSettings
+		[MovementControllerSettings::LARGE_ERROR_RANGE_TIMEOUT],
+	lateralControllerSettings
+		[MovementControllerSettings::MAXIMUM_ACCELERATION]	//
 );
 
 // angular PID controller
 lemlib::ControllerSettings angularMovementController(
-	angularControllerSettings[PROPORTIONAL_GAIN],
-	angularControllerSettings[INTEGRAL_GAIN],
-	angularControllerSettings[DERIVATIVE_GAIN],
-	angularControllerSettings[ANTI_WINDUP],
-	angularControllerSettings[SMALL_ERROR_RANGE],
-	angularControllerSettings[SMALL_ERROR_RANGE_TIMEOUT],
-	angularControllerSettings[LARGE_ERROR_RANGE],
-	angularControllerSettings[LARGE_ERROR_RANGE_TIMEOUT],
-	angularControllerSettings[MAXIMUM_ACCELERATION]	 //
+	angularControllerSettings[MovementControllerSettings::PROPORTIONAL_GAIN],
+	angularControllerSettings[MovementControllerSettings::INTEGRAL_GAIN],
+	angularControllerSettings[MovementControllerSettings::DERIVATIVE_GAIN],
+	angularControllerSettings[MovementControllerSettings::ANTI_WINDUP],
+	angularControllerSettings[MovementControllerSettings::SMALL_ERROR_RANGE],
+	angularControllerSettings
+		[MovementControllerSettings::SMALL_ERROR_RANGE_TIMEOUT],
+	angularControllerSettings[MovementControllerSettings::LARGE_ERROR_RANGE],
+	angularControllerSettings
+		[MovementControllerSettings::LARGE_ERROR_RANGE_TIMEOUT],
+	angularControllerSettings
+		[MovementControllerSettings::MAXIMUM_ACCELERATION]	//
 );
 
-lemlib::ExpoDriveCurve driveCurve(driveExpoDriveCurveSettings[DEADBAND],
-								  driveExpoDriveCurveSettings[MIN_OUTPUT],
-								  driveExpoDriveCurveSettings[CURVE]);
+lemlib::ExpoDriveCurve driveCurve(
+	driveExpoDriveCurveSettings[ExpoDriveCurveSettings::DEADBAND],
+	driveExpoDriveCurveSettings[ExpoDriveCurveSettings::MIN_OUTPUT],
+	driveExpoDriveCurveSettings[ExpoDriveCurveSettings::CURVE]);
 
-lemlib::ExpoDriveCurve turnCurve(turnExpoDriveCurveSettings[DEADBAND],
-								 turnExpoDriveCurveSettings[MIN_OUTPUT],
-								 turnExpoDriveCurveSettings[CURVE]);
+lemlib::ExpoDriveCurve turnCurve(
+	turnExpoDriveCurveSettings[ExpoDriveCurveSettings::DEADBAND],
+	turnExpoDriveCurveSettings[ExpoDriveCurveSettings::MIN_OUTPUT],
+	turnExpoDriveCurveSettings[ExpoDriveCurveSettings::CURVE]);
 
 // create the chassis
 lemlib::Chassis chassis(drivetrain,					// drivetrain settings
@@ -83,11 +92,7 @@ lemlib::Chassis chassis(drivetrain,					// drivetrain settings
 						&turnCurve					// steering curve
 );
 
-void initializeDevices(void) {
-	pros::lcd::initialize();
-	pros::screen::set_pen(pros::Color::white);
-	chassis.calibrate();  // Setup Sensors
-						  // pros::lcd::initialize();
-						  // pros::lcd::set_text(1, "Hello PROS User!");
-						  // pros::lcd::register_btn1_cb(on_center_button);
-}
+pros::adi::DigitalOut mogoHolderPiston(
+	adiPortNumbers[ADIPort::MOGO_HOLDER_PISTON][0]);
+
+}  // namespace Devices

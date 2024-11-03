@@ -5,43 +5,7 @@
 #include <unordered_map>
 #include <vector>
 #include "main.h"
-
-// User Controller Drivetrain Schemes
-typedef enum {
-	TANK_MOVEMENT,
-	SINGLE_STICK_ARCADE_MOVEMENT,
-	DOUBLE_STICK_ARCADE_MOVEMENT,
-	SINGLE_STICK_CURVATURE_MOVEMENT,
-	DOUBLE_STICK_CURVATURE_MOVEMENT,
-} DrivetrainMovementType;
-
-// Port Numbers
-typedef enum {
-	LEFT_MOTORS,
-	RIGHT_MOTORS,
-	INTAKE_MOTOR,
-	RECIEVER,
-	INERTIAL_SENSOR,
-} PortType;
-
-// Movement Controller Settings Numbers
-typedef enum {
-	PROPORTIONAL_GAIN,			// kP
-	INTEGRAL_GAIN,				// kI
-	DERIVATIVE_GAIN,			// kD
-	ANTI_WINDUP,				//
-	SMALL_ERROR_RANGE,			// in inches
-	SMALL_ERROR_RANGE_TIMEOUT,	// in milliseconds
-	LARGE_ERROR_RANGE,			// in inches
-	LARGE_ERROR_RANGE_TIMEOUT,	// in milliseconds
-	MAXIMUM_ACCELERATION,		// Slew
-} MovementControllerSettingsType;
-
-typedef enum {
-	DEADBAND,	 // Range where input is considered input
-	MIN_OUTPUT,	 // minimum output that can be returned
-	CURVE,		 // how "curved" the graph is
-} ExpoDriveCurveType;
+#include "utils/config-enums.hpp"
 
 // Drivetrain Measurements
 extern double drivetrainTrackWidth;
@@ -51,13 +15,15 @@ extern double drivetrainHorizontalDrift;
 
 // Drivetrain Types
 extern float drivetrainWheelType;
-extern std::unordered_map<PortType, std::vector<std::int8_t>> portNumbers;
-extern std::unordered_map<PortType, pros::v5::MotorGears> portGearsets;
+extern std::unordered_map<Port, std::vector<std::int8_t>> portNumbers;
+extern std::unordered_map<Port, pros::MotorGears> portGearsets;
+
+extern std::unordered_map<ADIPort, std::vector<char>> adiPortNumbers;
 
 // Drivetrain Movement Controller Settings
-extern std::unordered_map<MovementControllerSettingsType, float>
+extern std::unordered_map<MovementControllerSettings, float>
 	lateralControllerSettings;
-extern std::unordered_map<MovementControllerSettingsType, float>
+extern std::unordered_map<MovementControllerSettings, float>
 	angularControllerSettings;
 
 // Drivetrain Movement
@@ -72,12 +38,11 @@ extern double outputMovementThresholdPercentage;  // 0 - 1
 extern double driveExpoDriveCurveGain;
 extern double turnExpoDriveCurveGain;
 
-extern DrivetrainMovementType drivetrainMovementType;
-
 // Drivetrain Expo Drive Curves
-extern std::unordered_map<ExpoDriveCurveType, float>
+extern std::unordered_map<ExpoDriveCurveSettings, float>
 	driveExpoDriveCurveSettings;
-extern std::unordered_map<ExpoDriveCurveType, float> turnExpoDriveCurveSettings;
+extern std::unordered_map<ExpoDriveCurveSettings, float>
+	turnExpoDriveCurveSettings;
 
 // Intake
 extern double intakeVelocity;  // 0 - 1

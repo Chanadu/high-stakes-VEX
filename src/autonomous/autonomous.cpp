@@ -1,6 +1,6 @@
+#include "lemlib/api.hpp"
 #include "main.h"
-#include "screen-displays.hpp"
-#include "setup-devices.hpp"
+#include "utils/screen-displays.hpp"
 /**
  * Runs the user autonomous code. This function will be started in its own task
  * with the default priority and stack size whenever the robot is enabled via
@@ -14,22 +14,22 @@
  */
 
 // https://lemlib.readthedocs.io/en/stable/tutorials/4_pid_tuning.html
-void tuneAngularPID() {
-	chassis.setPose(0, 0, 0);
-	chassis.turnToHeading(90, 100000);
+void tuneAngularPID(lemlib::Chassis* chassis) {
+	chassis->setPose(0, 0, 0);
+	chassis->turnToHeading(90, 100000);
 }
 
-void tuneLateralPID() {
-	chassis.setPose(0, 0, 0);
-	chassis.moveToPoint(0, 48, 100000);
+void tuneLateralPID(lemlib::Chassis* chassis) {
+	chassis->setPose(0, 0, 0);
+	chassis->moveToPoint(0, 48, 100000);
 }
 
-void autonomous() {
+void autonomousRunner(pros::Controller* controller, lemlib::Chassis* chassis) {
 	int i = 0;
 	pros::screen::print(TEXT_LARGE_CENTER, i++, "AUTON RUNNING");
 	++i;
-	i = batteryDisplay(i);
+	i = batteryDisplay(controller, i);
 
-	tuneAngularPID();
-	// tuneLateralPID();
+	tuneAngularPID(chassis);
+	// tuneLateralPID(&chassis);
 }

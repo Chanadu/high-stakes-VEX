@@ -1,7 +1,10 @@
 #include "main.h"
+#include "autonomous/autonomous.hpp"
 #include "configuration.hpp"
 #include "lemlib/api.hpp"  // IWYU pragma: keep
+#include "opcontrol/opcontrol.hpp"
 #include "setup-devices.hpp"
+#include "utils/global-data.hpp"
 
 /**
  * A callback function for LLEMU's center button.
@@ -19,6 +22,15 @@
 // 	}
 // }
 
+void initializeDevices(lemlib::Chassis* chassis) {
+	pros::lcd::initialize();
+	pros::screen::set_pen(pros::Color::white);
+	chassis->calibrate();  // Setup Sensors
+						   // pros::lcd::initialize();
+						   // pros::lcd::set_text(1, "Hello PROS User!");
+						   // pros::lcd::register_btn1_cb(on_center_button);
+}
+
 /**
  * Runs initialization code. This occurs as soon as the program is started.
  *
@@ -26,5 +38,32 @@
  * to keep execution time for this mode under a few seconds.
  */
 void initialize() {
-	initializeDevices();
+	initializeDevices(&Devices::chassis);
 }
+
+void autonomous() {
+	autonomousRunner(&Devices::controller, &Devices::chassis);
+}
+
+void opcontrol() {
+	opcontrolRunner(&Devices::controller, &Devices::chassis,
+					&drivetrainMovementType);
+}
+
+/**
+ * Runs after initialize(), and before autonomous when connected to the Field
+ * Management System or the VEX Competition Switch. This is intended for
+ * competition-specific initialization routines, such as an autonomous selector
+ * on the LCD.
+ *
+ * This task will exit when the robot is enabled and autonomous or opcontrol
+ * starts.
+ */
+void competition_initialize() {}
+
+/**
+ * Runs while the robot is in the disabled state of Field Management System or
+ * the VEX Competition Switch, following either autonomous or opcontrol. When
+ * the robot is enabled, this task will exit.
+ */
+void disabled() {}
