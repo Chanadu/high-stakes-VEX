@@ -5,8 +5,8 @@
 #include "../main.h"
 #include "../utils/config-enums.hpp"
 
-void opcontrolRunner(pros::Controller* controller,
-					 lemlib::Chassis* chassis,
-					 DrivetrainMovement* drivetrainMovementType);
+extern void opcontrolRunner(pros::Controller* controller,
+							lemlib::Chassis* chassis,
+							DrivetrainMovement* drivetrainMovementType);
 
 #endif	// _OPCONTROL_HPP_

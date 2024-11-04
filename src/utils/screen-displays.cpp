@@ -22,3 +22,13 @@ int batteryDisplay(pros::Controller* controller, int i) {
 						controllerBatteryPercentage);
 	return i;
 }
+
+int chassisPositionDisplay(lemlib::Chassis* chassis, int i) {
+	pros::screen::print(TEXT_MEDIUM, i++, "Drivetrain X: %5.2f",
+						chassis->getPose().x);
+	pros::screen::print(TEXT_MEDIUM, i++, "Drivetrain Y: %5.2f",
+						chassis->getPose().y);
+	pros::screen::print(TEXT_MEDIUM, i++, "Drivetrain Theta: %5.2f",
+						chassis->getPose().theta);
+	return i;
+}

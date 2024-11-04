@@ -34,10 +34,10 @@ std::unordered_map<Port, std::vector<std::int8_t>> portNumbers = {
 		{20},
 	},
 };
-std::unordered_map<Port, pros::v5::MotorGears> portGearsets = {
-	{Port::LEFT_MOTORS, pros::v5::MotorGears::blue},
-	{Port::RIGHT_MOTORS, pros::v5::MotorGears::blue},
-	{Port::INTAKE_MOTOR, pros::v5::MotorGears::green},
+std::unordered_map<Port, pros::MotorGears> portGearsets = {
+	{Port::LEFT_MOTORS, pros::MotorGears::blue},
+	{Port::RIGHT_MOTORS, pros::MotorGears::blue},
+	{Port::INTAKE_MOTOR, pros::MotorGears::green},
 };
 std::unordered_map<ADIPort, std::vector<char>> adiPortNumbers = {
 	{ADIPort::MOGO_HOLDER_PISTON, {'A'}},
