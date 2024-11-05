@@ -3,6 +3,7 @@
 
 #include "../main.h"
 #include "../utils/config-enums.hpp"
+#include "lemlib/api.hpp"
 
 extern void drivetrainMovementController(pros::Controller& controller,
 										 lemlib::Chassis& chassis,

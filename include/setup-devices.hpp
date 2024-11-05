@@ -1,6 +1,7 @@
 #ifndef _SETUP_DEVICES_HPP_
 #define _SETUP_DEVICES_HPP_
 
+#include "lemlib/api.hpp"
 #include "main.h"
 
 namespace Devices {

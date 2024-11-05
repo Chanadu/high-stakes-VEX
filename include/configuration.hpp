@@ -4,6 +4,7 @@
 #include <cstdint>
 #include <unordered_map>
 #include <vector>
+#include "lemlib/api.hpp"
 #include "main.h"
 #include "utils/config-enums.hpp"
 
