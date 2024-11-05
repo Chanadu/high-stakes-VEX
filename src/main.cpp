@@ -5,7 +5,6 @@
 #include "opcontrol/opcontrol.hpp"
 #include "setup-devices.hpp"
 #include "utils/global-data.hpp"
-//
 void initialize() {
 	// initializeDevices(Devices::chassis);
 }
