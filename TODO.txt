@@ -1,0 +1,7 @@
+- Setup LVGL
+	- Create Button to Change Drivetrain Movement
+- Add Triggers to Move Conveyer
+- Add Button to Trigger Mogo Piston
+- Add Extra Button for Movement of Other Device
+- Tune PID System
+and Write Different PID Systems
