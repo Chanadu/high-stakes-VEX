@@ -6,7 +6,7 @@
 
 extern void initializeDevices(void);
 
-extern void batteryDisplay(pros::Controller* controller, int* i);
-extern void chassisPositionDisplay(lemlib::Chassis* chassis, int* i);
+extern void batteryDisplay(pros::Controller& controller, int& i);
+extern void chassisPositionDisplay(lemlib::Chassis& chassis, int& i);
 
 #endif	// _SCREEN_DISPLAYS_HPP_

@@ -12,7 +12,7 @@
  * to keep execution time for this mode under a few seconds.
  */
 void initialize() {
-	initializeDevices(&Devices::chassis);
+	initializeDevices(Devices::chassis);
 }
 
 /**
@@ -27,7 +27,7 @@ void initialize() {
  * from where it left off.
  */
 void autonomous() {
-	autonomousRunner(&Devices::controller, &Devices::chassis);
+	autonomousRunner(Devices::controller, Devices::chassis);
 }
 
 /**
@@ -44,8 +44,7 @@ void autonomous() {
  * task, not resume it from where it left off.
  */
 void opcontrol() {
-	opcontrolRunner(&Devices::controller, &Devices::chassis,
-					&drivetrainMovement);
+	opcontrolRunner(Devices::controller, Devices::chassis, drivetrainMovement);
 }
 
 /**

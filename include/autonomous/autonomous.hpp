@@ -4,6 +4,6 @@
 #include "../lemlib/api.hpp"
 #include "../main.h"
 
-void autonomousRunner(pros::Controller* controller, lemlib::Chassis* chassis);
+void autonomousRunner(pros::Controller& controller, lemlib::Chassis& chassis);
 
 #endif	// _AUTONOMOUS_HPP_

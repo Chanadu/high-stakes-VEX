@@ -7,6 +7,7 @@
 #include "main.h"
 #include "utils/config-enums.hpp"
 
+namespace Config {
 // Drivetrain Measurements
 extern double drivetrainTrackWidth;
 extern double drivetrainWheelbaseWidth;
@@ -21,10 +22,8 @@ extern std::unordered_map<Port, pros::MotorGears> portGearsets;
 extern std::unordered_map<ADIPort, std::vector<char>> adiPortNumbers;
 
 // Drivetrain Movement Controller Settings
-extern std::unordered_map<MovementControllerSettings, float>
-	lateralControllerSettings;
-extern std::unordered_map<MovementControllerSettings, float>
-	angularControllerSettings;
+extern std::unordered_map<MovementControllerSettings, float> lateralControllerSettings;
+extern std::unordered_map<MovementControllerSettings, float> angularControllerSettings;
 
 // Drivetrain Movement
 extern double maxControllerValue;
@@ -39,12 +38,11 @@ extern double driveExpoDriveCurveGain;
 extern double turnExpoDriveCurveGain;
 
 // Drivetrain Expo Drive Curves
-extern std::unordered_map<ExpoDriveCurveSettings, float>
-	driveExpoDriveCurveSettings;
-extern std::unordered_map<ExpoDriveCurveSettings, float>
-	turnExpoDriveCurveSettings;
+extern std::unordered_map<ExpoDriveCurveSettings, float> driveExpoDriveCurveSettings;
+extern std::unordered_map<ExpoDriveCurveSettings, float> turnExpoDriveCurveSettings;
 
 // Intake
 extern double intakeVelocity;  // 0 - 1
+}  // namespace Config
 
 #endif	// _CONFIGURATION_HPP_

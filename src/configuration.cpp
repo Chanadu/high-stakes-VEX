@@ -4,6 +4,8 @@
 #include <cstdint>
 #include <vector>
 
+namespace Config {
+
 double drivetrainTrackWidth = 14.975;
 double drivetrainWheelbaseWidth = 9.0;
 double drivetrainWheelRPM = 200.0;
@@ -43,84 +45,82 @@ std::unordered_map<ADIPort, std::vector<char>> adiPortNumbers = {
 	{ADIPort::MOGO_HOLDER_PISTON, {'A'}},
 };
 
-std::unordered_map<MovementControllerSettings, float>
-	lateralControllerSettings = {
-		{
-			MovementControllerSettings::PROPORTIONAL_GAIN,
-			10,
-		},
-		{
-			MovementControllerSettings::INTEGRAL_GAIN,
-			0,
-		},
-		{
-			MovementControllerSettings::DERIVATIVE_GAIN,
-			3,
-		},
-		{
-			MovementControllerSettings::ANTI_WINDUP,
-			3,
-		},
-		{
-			MovementControllerSettings::SMALL_ERROR_RANGE,
-			1,
-		},
-		{
-			MovementControllerSettings::SMALL_ERROR_RANGE_TIMEOUT,
-			100,
-		},
-		{
-			MovementControllerSettings::LARGE_ERROR_RANGE,
-			3,
-		},
-		{
+std::unordered_map<MovementControllerSettings, float> lateralControllerSettings = {
+	{
+		MovementControllerSettings::PROPORTIONAL_GAIN,
+		10,
+	},
+	{
+		MovementControllerSettings::INTEGRAL_GAIN,
+		0,
+	},
+	{
+		MovementControllerSettings::DERIVATIVE_GAIN,
+		3,
+	},
+	{
+		MovementControllerSettings::ANTI_WINDUP,
+		3,
+	},
+	{
+		MovementControllerSettings::SMALL_ERROR_RANGE,
+		1,
+	},
+	{
+		MovementControllerSettings::SMALL_ERROR_RANGE_TIMEOUT,
+		100,
+	},
+	{
+		MovementControllerSettings::LARGE_ERROR_RANGE,
+		3,
+	},
+	{
 
-			MovementControllerSettings::LARGE_ERROR_RANGE_TIMEOUT,
-			500,
-		},
-		{
-			MovementControllerSettings::MAXIMUM_ACCELERATION,
-			20,
-		},
+		MovementControllerSettings::LARGE_ERROR_RANGE_TIMEOUT,
+		500,
+	},
+	{
+		MovementControllerSettings::MAXIMUM_ACCELERATION,
+		20,
+	},
 };
-std::unordered_map<MovementControllerSettings, float>
-	angularControllerSettings = {
-		{
-			MovementControllerSettings::PROPORTIONAL_GAIN,
-			2,
-		},
-		{
-			MovementControllerSettings::INTEGRAL_GAIN,
-			0,
-		},
-		{
-			MovementControllerSettings::DERIVATIVE_GAIN,
-			10,
-		},
-		{
-			MovementControllerSettings::ANTI_WINDUP,
-			3,
-		},
-		{
-			MovementControllerSettings::SMALL_ERROR_RANGE,
-			1,
-		},
-		{
-			MovementControllerSettings::SMALL_ERROR_RANGE_TIMEOUT,
-			100,
-		},
-		{
-			MovementControllerSettings::LARGE_ERROR_RANGE,
-			3,
-		},
-		{
-			MovementControllerSettings::LARGE_ERROR_RANGE_TIMEOUT,
-			500,
-		},
-		{
-			MovementControllerSettings::MAXIMUM_ACCELERATION,
-			0,
-		},
+std::unordered_map<MovementControllerSettings, float> angularControllerSettings = {
+	{
+		MovementControllerSettings::PROPORTIONAL_GAIN,
+		2,
+	},
+	{
+		MovementControllerSettings::INTEGRAL_GAIN,
+		0,
+	},
+	{
+		MovementControllerSettings::DERIVATIVE_GAIN,
+		10,
+	},
+	{
+		MovementControllerSettings::ANTI_WINDUP,
+		3,
+	},
+	{
+		MovementControllerSettings::SMALL_ERROR_RANGE,
+		1,
+	},
+	{
+		MovementControllerSettings::SMALL_ERROR_RANGE_TIMEOUT,
+		100,
+	},
+	{
+		MovementControllerSettings::LARGE_ERROR_RANGE,
+		3,
+	},
+	{
+		MovementControllerSettings::LARGE_ERROR_RANGE_TIMEOUT,
+		500,
+	},
+	{
+		MovementControllerSettings::MAXIMUM_ACCELERATION,
+		0,
+	},
 };
 double maxControllerValue = 127.0;
 
@@ -133,20 +133,19 @@ double outputMovementThresholdPercentage = 10.0 / maxControllerValue;
 double driveExpoDriveCurveGain = 1.019;
 double turnExpoDriveCurveGain = 1.019;
 
-std::unordered_map<ExpoDriveCurveSettings, float> driveExpoDriveCurveSettings =
+std::unordered_map<ExpoDriveCurveSettings, float> driveExpoDriveCurveSettings = {
 	{
-		{
-			ExpoDriveCurveSettings::DEADBAND,
-			joystickThresholdPercentage* maxControllerValue,
-		},
-		{
-			ExpoDriveCurveSettings::MIN_OUTPUT,
-			outputMovementThresholdPercentage* maxControllerValue,
-		},
-		{
-			ExpoDriveCurveSettings::CURVE,
-			driveExpoDriveCurveGain,
-		},
+		ExpoDriveCurveSettings::DEADBAND,
+		joystickThresholdPercentage* maxControllerValue,
+	},
+	{
+		ExpoDriveCurveSettings::MIN_OUTPUT,
+		outputMovementThresholdPercentage* maxControllerValue,
+	},
+	{
+		ExpoDriveCurveSettings::CURVE,
+		driveExpoDriveCurveGain,
+	},
 };
 
 std::unordered_map<ExpoDriveCurveSettings, float> turnExpoDriveCurveSettings = {
@@ -163,3 +162,5 @@ std::unordered_map<ExpoDriveCurveSettings, float> turnExpoDriveCurveSettings = {
 		turnExpoDriveCurveGain,
 	},
 };
+
+}  // namespace Config

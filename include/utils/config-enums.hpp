@@ -1,9 +1,6 @@
 #ifndef _CONFIG_ENUMS_HPP_
 #define _CONFIG_ENUMS_HPP_
 
-// class Config {
-// User Controller Drivetrain Schemes
-// public:
 enum class DrivetrainMovement {
 	TANK_MOVEMENT,
 	SINGLE_STICK_ARCADE_MOVEMENT,
@@ -43,6 +40,5 @@ enum class ExpoDriveCurveSettings {
 	MIN_OUTPUT,	 // minimum output that can be returned
 	CURVE,		 // how "curved" the graph is
 };
-// };
 
 #endif	// _CONFIG_ENUMS_HPP
