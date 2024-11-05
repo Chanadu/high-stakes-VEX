@@ -3,6 +3,6 @@
 #ifndef _GLOBAL_DATA_HPP_
 #define _GLOBAL_DATA_HPP_
 
-extern DrivetrainMovement drivetrainMovementType;
+extern DrivetrainMovement drivetrainMovement;
 
 #endif	// _GLOBAL_DATA_HPP_

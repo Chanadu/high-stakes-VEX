@@ -1,17 +1,5 @@
-#include "lemlib/api.hpp"
 #include "main.h"
 #include "utils/screen-displays.hpp"
-/**
- * Runs the user autonomous code. This function will be started in its own task
- * with the default priority and stack size whenever the robot is enabled via
- * the Field Management System or the VEX Competition Switch in the autonomous
- * mode. Alternatively, this function may be called in initialize or opcontrol
- * for non-competition testing purposes.
- *
- * If the robot is disabled or communications is lost, the autonomous task
- * will be stopped. Re-enabling the robot will restart the task, not re-start it
- * from where it left off.
- */
 
 // https://lemlib.readthedocs.io/en/stable/tutorials/4_pid_tuning.html
 void tuneAngularPID(lemlib::Chassis* chassis) {
@@ -26,9 +14,9 @@ void tuneLateralPID(lemlib::Chassis* chassis) {
 
 void autonomousRunner(pros::Controller* controller, lemlib::Chassis* chassis) {
 	int i = 0;
-	pros::screen::print(TEXT_LARGE_CENTER, i++, "AUTON RUNNING");
+	pros::lcd::print(i++, "AUTON RUNNING");
 	++i;
-	i = batteryDisplay(controller, i);
+	batteryDisplay(controller, &i);
 
 	tuneAngularPID(chassis);
 	// tuneLateralPID(&chassis);

@@ -1,30 +1,13 @@
 #include "main.h"
 #include "autonomous/autonomous.hpp"
 #include "configuration.hpp"
-#include "lemlib/api.hpp"  // IWYU pragma: keep
 #include "opcontrol/opcontrol.hpp"
 #include "setup-devices.hpp"
 #include "utils/global-data.hpp"
 
-/**
- * A callback function for LLEMU's center button.
- *
- * When this callback is fired, it will toggle line 2 of the LCD text between
- * "I was pressed!" and nothing.
- */
-// void on_center_button() {
-// 	static bool pressed = false;
-// 	pressed = !pressed;
-// 	if (pressed) {
-// 		pros::lcd::set_text(2, "I was pressed!");
-// 	} else {
-// 		pros::lcd::clear_line(2);
-// 	}
-// }
-
 void initializeDevices(lemlib::Chassis* chassis) {
 	pros::lcd::initialize();
-	pros::screen::set_pen(pros::Color::white);
+	// pros::screen::set_pen(pros::Color::white);
 	chassis->calibrate();  // Setup Sensors
 						   // pros::lcd::initialize();
 						   // pros::lcd::set_text(1, "Hello PROS User!");
@@ -41,13 +24,37 @@ void initialize() {
 	initializeDevices(&Devices::chassis);
 }
 
+/**
+ * Runs the user autonomous code. This function will be started in its own task
+ * with the default priority and stack size whenever the robot is enabled via
+ * the Field Management System or the VEX Competition Switch in the autonomous
+ * mode. Alternatively, this function may be called in initialize or opcontrol
+ * for non-competition testing purposes.
+ *
+ * If the robot is disabled or communications is lost, the autonomous task
+ * will be stopped. Re-enabling the robot will restart the task, not re-start it
+ * from where it left off.
+ */
 void autonomous() {
 	autonomousRunner(&Devices::controller, &Devices::chassis);
 }
 
+/**
+ * Runs the operator control code. This function will be started in its own task
+ * with the default priority and stack size whenever the robot is enabled via
+ * the Field Management System or the VEX Competition Switch in the operator
+ * control mode.
+ *
+ * If no competition control is connected, this function will run immediately
+ * following initialize().
+ *
+ * If the robot is disabled or communications is lost, the
+ * operator control task will be stopped. Re-enabling the robot will restart the
+ * task, not resume it from where it left off.
+ */
 void opcontrol() {
 	opcontrolRunner(&Devices::controller, &Devices::chassis,
-					&drivetrainMovementType);
+					&drivetrainMovement);
 }
 
 /**

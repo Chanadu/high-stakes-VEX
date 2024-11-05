@@ -1,7 +1,6 @@
 #ifndef _OPCONTROL_HPP_
 #define _OPCONTROL_HPP_
 
-#include "../lemlib/api.hpp"
 #include "../main.h"
 #include "../utils/config-enums.hpp"
 

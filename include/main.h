@@ -39,7 +39,8 @@
 /**
  * You should add more #includes here
  */
-//#include "okapi/api.hpp"
+// #include "okapi/api.hpp"
+#include "lemlib/api.hpp"
 
 /**
  * If you find doing pros::Motor() to be tedious and you'd prefer just to do
@@ -74,7 +75,7 @@ void opcontrol(void);
 /**
  * You can add C++-only headers here
  */
-//#include <iostream>
+// #include <iostream>
 #endif
 
-#endif  // _PROS_MAIN_H_
+#endif	// _PROS_MAIN_H_

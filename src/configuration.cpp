@@ -1,8 +1,8 @@
 #include "configuration.hpp"
+#include "main.h"
 
 #include <cstdint>
 #include <vector>
-#include "lemlib/api.hpp"
 
 double drivetrainTrackWidth = 14.975;
 double drivetrainWheelbaseWidth = 9.0;

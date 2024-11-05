@@ -1,6 +1,5 @@
 #include "setup-devices.hpp"
 #include "configuration.hpp"
-#include "lemlib/api.hpp"
 #include "main.h"
 
 namespace Devices {
