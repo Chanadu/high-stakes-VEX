@@ -25,4 +25,6 @@ extern lemlib::Chassis chassis;
 extern pros::adi::DigitalOut mogoHolderPiston;
 }  // namespace Devices
 
+extern void initializeDevices(lemlib::Chassis* chassis);
+
 #endif	// _SETUP_DEVICES_HPP

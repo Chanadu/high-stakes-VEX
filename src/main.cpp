@@ -5,15 +5,6 @@
 #include "setup-devices.hpp"
 #include "utils/global-data.hpp"
 
-void initializeDevices(lemlib::Chassis* chassis) {
-	pros::lcd::initialize();
-	// pros::screen::set_pen(pros::Color::white);
-	chassis->calibrate();  // Setup Sensors
-						   // pros::lcd::initialize();
-						   // pros::lcd::set_text(1, "Hello PROS User!");
-						   // pros::lcd::register_btn1_cb(on_center_button);
-}
-
 /**
  * Runs initialization code. This occurs as soon as the program is started.
  *
