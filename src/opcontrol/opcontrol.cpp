@@ -11,6 +11,7 @@ void opcontrolRunner(pros::Controller& controller,
 	pros::lcd::register_btn1_cb(on_center_button);
 	while (true) {
 		int i = 0;
+
 		batteryDisplay(controller, i);
 		i++;
 		drivetrainMovementController(controller, chassis, drivetrainMovement, i);

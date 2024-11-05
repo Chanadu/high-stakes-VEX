@@ -3,7 +3,6 @@
 
 #include "../main.h"
 #include "../utils/config-enums.hpp"
-#include "lemlib/api.hpp"
 
 extern void on_center_button(void);
 

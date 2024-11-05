@@ -34,27 +34,27 @@ void drivetrainMovementController(pros::Controller& controller,
 	pros::lcd::clear_line(i);
 
 	switch (drivetrainMovement) {
-		case DrivetrainMovement::TANK_MOVEMENT:
+		case DrivetrainMovement::TankMovement:
 			pros::lcd::print(i, "Tank Movement");
 			tankControl(controller, chassis);
 			break;
 
-		case DrivetrainMovement::SINGLE_STICK_ARCADE_MOVEMENT:
+		case DrivetrainMovement::SingleStickArcadeMovement:
 			pros::lcd::print(i, "Single Stick Arcade Movement");
 			singleStickArcadeControl(controller, chassis);
 			break;
 
-		case DrivetrainMovement::DOUBLE_STICK_ARCADE_MOVEMENT:
+		case DrivetrainMovement::DoubleStickArcadeMovement:
 			pros::lcd::print(i, "Double Stick Arcade Movement");
 			doubleStickArcadeControl(controller, chassis);
 			break;
 
-		case DrivetrainMovement::SINGLE_STICK_CURVATURE_MOVEMENT:
+		case DrivetrainMovement::SingleStickCurvatureMovement:
 			pros::lcd::print(i, "Single Stick Curvature Movement");
 			singleStickCurvatureControl(controller, chassis);
 			break;
 
-		case DrivetrainMovement::DOUBLE_STICK_CURVATURE_MOVEMENT:
+		case DrivetrainMovement::DoubleStickCurvatureMovement:
 			pros::lcd::print(i, "Double Stick Curvature Movement");
 			doubleStickCurvatureControl(controller, chassis);
 			break;

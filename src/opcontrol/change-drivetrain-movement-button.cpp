@@ -4,24 +4,24 @@
 
 void on_center_button() {
 	switch (drivetrainMovement) {
-		case DrivetrainMovement::TANK_MOVEMENT:
-			drivetrainMovement = DrivetrainMovement::SINGLE_STICK_ARCADE_MOVEMENT;
+		case DrivetrainMovement::TankMovement:
+			drivetrainMovement = DrivetrainMovement::SingleStickArcadeMovement;
 			break;
 
-		case DrivetrainMovement::SINGLE_STICK_ARCADE_MOVEMENT:
-			drivetrainMovement = DrivetrainMovement::DOUBLE_STICK_ARCADE_MOVEMENT;
+		case DrivetrainMovement::SingleStickArcadeMovement:
+			drivetrainMovement = DrivetrainMovement::DoubleStickArcadeMovement;
 			break;
 
-		case DrivetrainMovement::DOUBLE_STICK_ARCADE_MOVEMENT:
-			drivetrainMovement = DrivetrainMovement::SINGLE_STICK_CURVATURE_MOVEMENT;
+		case DrivetrainMovement::DoubleStickArcadeMovement:
+			drivetrainMovement = DrivetrainMovement::SingleStickCurvatureMovement;
 			break;
 
-		case DrivetrainMovement::SINGLE_STICK_CURVATURE_MOVEMENT:
-			drivetrainMovement = DrivetrainMovement::DOUBLE_STICK_CURVATURE_MOVEMENT;
+		case DrivetrainMovement::SingleStickCurvatureMovement:
+			drivetrainMovement = DrivetrainMovement::DoubleStickCurvatureMovement;
 			break;
 
-		case DrivetrainMovement::DOUBLE_STICK_CURVATURE_MOVEMENT:
-			drivetrainMovement = DrivetrainMovement::TANK_MOVEMENT;
+		case DrivetrainMovement::DoubleStickCurvatureMovement:
+			drivetrainMovement = DrivetrainMovement::TankMovement;
 			break;
 	}
 }
