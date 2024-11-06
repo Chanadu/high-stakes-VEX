@@ -9,16 +9,16 @@
 void opcontrolRunner(pros::Controller& controller,
 					 lemlib::Chassis& chassis,
 					 DrivetrainMovement& drivetrainMovement) {
-	// pros::lcd::register_btn1_cb(on_center_button);
+	pros::lcd::register_btn1_cb(on_center_button);
 	while (true) {
 		int i = 0;
 
-		// batteryDisplay(controller, i);
+		batteryDisplay(controller, i);
 		i++;
-		// drivetrainMovementController(controller, chassis, drivetrainMovement, i);
+		drivetrainMovementController(controller, chassis, drivetrainMovement, i);
 
 		// pros::screen::print(TEXT_MEDIUM, i++, "Testing");
-		gui();
+		// gui();
 		pros::delay(20);
 	}
 }
