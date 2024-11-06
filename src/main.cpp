@@ -6,18 +6,18 @@
 #include "setup-devices.hpp"
 #include "utils/global-data.hpp"
 
-void initialize() {
+void initialize(void) {
 	// initializeDevices(Devices::chassis);
 }
 
-void autonomous() {
+void autonomous(void) {
 	// autonomousRunner(Devices::controller, Devices::chassis);
 }
 
-void opcontrol() {
+void opcontrol(void) {
 	// opcontrolRunner(Devices::controller, Devices::chassis, drivetrainMovement);
 }
 
-void competition_initialize() {}
+void competition_initialize(void) {}
 
-void disabled() {}
+void disabled(void) {}

@@ -2,7 +2,7 @@
 #include "utils/config-enums.hpp"
 #include "utils/global-data.hpp"
 
-void on_center_button() {
+void on_center_button(void) {
 	switch (drivetrainMovement) {
 		case DrivetrainMovement::TankMovement:
 			drivetrainMovement = DrivetrainMovement::SingleStickArcadeMovement;
