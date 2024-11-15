@@ -9,7 +9,19 @@ extern pros::MotorGroup leftMotorGroup;
 extern pros::MotorGroup rightMotorGroup;
 
 extern lemlib::Drivetrain drivetrain;
+
+extern pros::MotorGroup intakeMotorGroup;
+extern pros::controller_digital_e_t intakeInButton;
+extern pros::controller_digital_e_t intakeOutButton;
+
+extern pros::Motor armMotor;
+extern pros::controller_digital_e_t armInButton;
+extern pros::controller_digital_e_t armOutButton;
+
 extern pros::Imu imu;
+
+extern pros::adi::Pneumatics holderPiston;
+extern pros::controller_digital_e_t holderPistonButton;
 // extern pros::Rotation horizontalEncoder;
 // extern pros::adi::Encoder verticalEncoder;
 // extern lemlib::TrackingWheel horizontalTrackingWheel;
@@ -21,10 +33,8 @@ extern lemlib::ControllerSettings lateralMovementController;
 extern lemlib::ControllerSettings angularMovementController;
 
 extern lemlib::Chassis chassis;
-
-extern pros::adi::DigitalOut mogoHolderPiston;
 }  // namespace Devices
 
-extern void initializeDevices(lemlib::Chassis& chassis);
+extern void initializeDevices();
 
 #endif	// SETUP_DEVICES_HPP

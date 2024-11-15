@@ -3,11 +3,11 @@
 #include "main.h"
 
 void batteryDisplay(short& i) {
-	const int batteryPercentage = pros::battery::get_capacity();
+	const double batteryPercentage = pros::battery::get_capacity();
 	// pros::screen::set_pen(batteryPercentage < 50   ? pros::Color::red
 	// 					  : batteryPercentage < 75 ? pros::Color::yellow
 	// 											   : pros::Color::green);
-	pros::lcd::print(i++, "Battery: %3d%%", batteryPercentage);
+	pros::lcd::print(i++, "Battery: %3d%%", static_cast<int>(batteryPercentage));
 	const int controllerBatteryPercentage = Devices::controller.get_battery_capacity();
 	// pros::screen::set_pen(controllerBatteryPercentage < 50 ? pros::Color::red
 	// 					  : controllerBatteryPercentage < 75

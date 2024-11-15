@@ -1,10 +1,10 @@
-Create Intake Motor Group, Arm Motor, and Mogo Pisto X
-- Add Button to Trigger Mogo Piston
-- Remap Controller Triggers to Intake Motor(s)
-	- Make this a Motor Group Just in Case
-	- Back Triggers
-- Remap Other Controller Triggers to Arm
-	- Front Triggers
+Create Intake Motor Group, Arm Motor, and Mogo Piston X
+- Add Button to Trigger Mogo Piston X
+- Remap Controller Triggers to Intake Motor(s) X
+	- Make this a Motor Group Just in Case X
+	- Front Triggers X
+- Remap Other Controller Triggers to Arm X
+	- Front Triggers X
 - Setup LVGL GUI
 	- Create Button to Change Drivetrain Movement
 

@@ -1,5 +1,4 @@
-#include <devices.hpp>
-
+#include "devices.hpp"
 #include "main.h"
 #include "screen-displays.hpp"
 
@@ -18,7 +17,7 @@ void autonomousRunner() {
 	short i = 0;
 	pros::lcd::print(i++, "AUTON RUNNING");
 	++i;
-	batteryDisplay(Devices::controller, i);
+	batteryDisplay(i);
 
 	tuneAngularPID();
 	// tuneLateralPID(&chassis);
