@@ -1,6 +1,6 @@
 #ifndef CHANGE_DRIVETRAIN_MOVEMENT_BUTTON_HPP
 #define CHANGE_DRIVETRAIN_MOVEMENT_BUTTON_HPP
 
-extern void on_center_button();
+extern void changeDrivetrainMovement();
 
 #endif	// CHANGE_DRIVETRAIN_MOVEMENT_BUTTON_HPP

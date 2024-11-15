@@ -3,38 +3,28 @@
 #include "main.h"
 
 void tankControl() {
-	const int leftY =
-		Devices::controller.get_analog(pros::E_CONTROLLER_ANALOG_LEFT_Y);
-	const int rightY =
-		Devices::controller.get_analog(pros::E_CONTROLLER_ANALOG_RIGHT_Y);
+	const int leftY = Devices::controller.get_analog(pros::E_CONTROLLER_ANALOG_LEFT_Y);
+	const int rightY = Devices::controller.get_analog(pros::E_CONTROLLER_ANALOG_RIGHT_Y);
 	Devices::chassis.tank(leftY, rightY);
 }
 void singleStickArcadeControl() {
-	const int leftY =
-		Devices::controller.get_analog(pros::E_CONTROLLER_ANALOG_LEFT_Y);
-	const int leftX =
-		Devices::controller.get_analog(pros::E_CONTROLLER_ANALOG_LEFT_X);
+	const int leftY = Devices::controller.get_analog(pros::E_CONTROLLER_ANALOG_LEFT_Y);
+	const int leftX = Devices::controller.get_analog(pros::E_CONTROLLER_ANALOG_LEFT_X);
 	Devices::chassis.arcade(leftY, leftX);
 }
 void doubleStickArcadeControl() {
-	const int leftY =
-		Devices::controller.get_analog(pros::E_CONTROLLER_ANALOG_LEFT_Y);
-	const int rightX =
-		Devices::controller.get_analog(pros::E_CONTROLLER_ANALOG_RIGHT_X);
+	const int leftY = Devices::controller.get_analog(pros::E_CONTROLLER_ANALOG_LEFT_Y);
+	const int rightX = Devices::controller.get_analog(pros::E_CONTROLLER_ANALOG_RIGHT_X);
 	Devices::chassis.arcade(leftY, rightX);
 }
 void singleStickCurvatureControl() {
-	const int leftY =
-		Devices::controller.get_analog(pros::E_CONTROLLER_ANALOG_LEFT_Y);
-	const int leftX =
-		Devices::controller.get_analog(pros::E_CONTROLLER_ANALOG_LEFT_X);
+	const int leftY = Devices::controller.get_analog(pros::E_CONTROLLER_ANALOG_LEFT_Y);
+	const int leftX = Devices::controller.get_analog(pros::E_CONTROLLER_ANALOG_LEFT_X);
 	Devices::chassis.curvature(leftY, leftX);
 }
 void doubleStickCurvatureControl() {
-	const int leftY =
-		Devices::controller.get_analog(pros::E_CONTROLLER_ANALOG_LEFT_Y);
-	const int rightX =
-		Devices::controller.get_analog(pros::E_CONTROLLER_ANALOG_RIGHT_X);
+	const int leftY = Devices::controller.get_analog(pros::E_CONTROLLER_ANALOG_LEFT_Y);
+	const int rightX = Devices::controller.get_analog(pros::E_CONTROLLER_ANALOG_RIGHT_X);
 	Devices::chassis.curvature(leftY, rightX);
 }
 

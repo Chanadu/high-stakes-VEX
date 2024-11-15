@@ -23,13 +23,12 @@ pros::Imu imu(9);
 pros::adi::Pneumatics holderPiston('H', false, false);
 pros::controller_digital_e_t holderPistonButton = pros::E_CONTROLLER_DIGITAL_Y;
 
-lemlib::Drivetrain drivetrain(
-	&leftMotorGroup,				   // leftMotorGroup
-	&rightMotorGroup,				   // rightMotorGroup
-	Config::drivetrainTrackWidth,	   // trackWidth
-	Config::drivetrainWheelType,	   // wheelType
-	Config::drivetrainWheelRPM,		   // wheelRPM
-	Config::drivetrainHorizontalDrift  // // horizontalDrift
+lemlib::Drivetrain drivetrain(&leftMotorGroup,					 // leftMotorGroup
+							  &rightMotorGroup,					 // rightMotorGroup
+							  Config::drivetrainTrackWidth,		 // trackWidth
+							  Config::drivetrainWheelType,		 // wheelType
+							  Config::drivetrainWheelRPM,		 // wheelRPM
+							  Config::drivetrainHorizontalDrift	 // // horizontalDrift
 );
 lemlib::OdomSensors odomSensors(nullptr,  // vertical tracking wheel 1
 								nullptr,  // vertical tracking wheel 2
@@ -38,20 +37,16 @@ lemlib::OdomSensors odomSensors(nullptr,  // vertical tracking wheel 1
 								&imu	  // inertial sensor
 );
 
-lemlib::ExpoDriveCurve driveCurve(	//
-	Config::joystickThresholdPercentage / 100.0f *
-		Config::maxControllerValue,	 // deadband
-	Config::outputMovementThresholdPercentage / 100.0f *
-		Config::maxControllerValue,	 // minOutput
-	Config::lateralCurveGain		 // curve
+lemlib::ExpoDriveCurve driveCurve(													  //
+	Config::joystickThresholdPercentage / 100.0f * Config::maxControllerValue,		  // deadband
+	Config::outputMovementThresholdPercentage / 100.0f * Config::maxControllerValue,  // minOutput
+	Config::lateralCurveGain														  // curve
 );
 
-lemlib::ExpoDriveCurve turnCurve(  //
-	Config::joystickThresholdPercentage / 100.0f *
-		Config::maxControllerValue,	 // deadband
-	Config::outputMovementThresholdPercentage / 100.0f *
-		Config::maxControllerValue,	 // minOutput
-	Config::angularCurveGain		 // curve
+lemlib::ExpoDriveCurve turnCurve(													  //
+	Config::joystickThresholdPercentage / 100.0f * Config::maxControllerValue,		  // deadband
+	Config::outputMovementThresholdPercentage / 100.0f * Config::maxControllerValue,  // minOutput
+	Config::angularCurveGain														  // curve
 );
 
 // create the chassis
