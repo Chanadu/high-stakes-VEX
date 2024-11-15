@@ -1,31 +1,19 @@
 #ifndef _CONFIGURATION_HPP_
 #define _CONFIGURATION_HPP_
 
-#include <cstdint>
-#include <unordered_map>
-#include <vector>
 #include "main.h"
 #include "utils/config-enums.hpp"
 
 namespace Config {
-// Drivetrain Measurements
 extern double drivetrainTrackWidth;
 extern double drivetrainWheelbaseWidth;
 extern double drivetrainWheelRPM;
 extern double drivetrainHorizontalDrift;
 
-// Drivetrain Types
+extern double intakeVelocity;  // 0 - 1
+
 extern float drivetrainWheelType;
-extern std::unordered_map<Port, std::vector<std::int8_t>> portNumbers;
-extern std::unordered_map<Port, pros::MotorGears> portGearsets;
 
-extern std::unordered_map<ADIPort, std::vector<char>> adiPortNumbers;
-
-// Drivetrain Movement Controller Settings
-extern std::unordered_map<MovementControllerSettings, float> lateralControllerSettings;
-extern std::unordered_map<MovementControllerSettings, float> angularControllerSettings;
-
-// Drivetrain Movement
 extern double maxControllerValue;
 
 extern double movementVelocityPercentage;  // 0 - 1
@@ -34,15 +22,21 @@ extern double turningVelocityPercentage;   // 0 - 1
 extern double joystickThresholdPercentage;		  // 0 - 1
 extern double outputMovementThresholdPercentage;  // 0 - 1
 
-extern double driveExpoDriveCurveGain;
-extern double turnExpoDriveCurveGain;
+extern double lateralCurveGain;
+extern double angularCurveGain;
 
-// Drivetrain Expo Drive Curves
-extern std::unordered_map<ExpoDriveCurveSettings, float> driveExpoDriveCurveSettings;
-extern std::unordered_map<ExpoDriveCurveSettings, float> turnExpoDriveCurveSettings;
+extern lemlib::ControllerSettings lateralMovementController;
+extern lemlib::ControllerSettings angularMovementController;
 
-// Intake
-extern double intakeVelocity;  // 0 - 1
+enum class DrivetrainMovement {
+	Tank,
+	SingleStickArcade,
+	DoubleStickArcade,
+	SingleStickCurvature,
+	DoubleStickCurvature
+};
+
+extern DrivetrainMovement drivetrainMovement;
 }  // namespace Config
 
 #endif	// _CONFIGURATION_HPP_

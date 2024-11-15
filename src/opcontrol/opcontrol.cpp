@@ -1,21 +1,19 @@
+#include "configuration.hpp"
+#include "devices.hpp"
 #include "main.h"
 #include "opcontrol/change-drivetrain-movement-button.hpp"
 #include "opcontrol/drivetrain-movement.hpp"
 #include "opcontrol/gui.hpp"
-#include "utils/config-enums.hpp"
-#include "utils/global-data.hpp"
-#include "utils/screen-displays.hpp"
+#include "screen-displays.hpp"
 
-void opcontrolRunner(pros::Controller& controller,
-					 lemlib::Chassis& chassis,
-					 DrivetrainMovement& drivetrainMovement) {
+[[noreturn]]void opcontrolRunner() {
 	pros::lcd::register_btn1_cb(on_center_button);
 	while (true) {
 		int i = 0;
 
-		batteryDisplay(controller, i);
+		batteryDisplay(Devices::controller, i);
 		i++;
-		drivetrainMovementController(controller, chassis, drivetrainMovement, i);
+		drivetrainMovementController(i);
 
 		// pros::screen::print(TEXT_MEDIUM, i++, "Testing");
 		// gui();

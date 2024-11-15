@@ -17,3 +17,5 @@ temp.errors
 
 # More
 .ccls-cache/
+
+.idea/

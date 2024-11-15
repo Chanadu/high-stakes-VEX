@@ -1,8 +1,16 @@
-- Setup LVGL
-	- Create Button to Change Drivetrain Movement
-- Add Triggers to Move Conveyer
+Create Intake Motor Group, Arm Motor, and Mogo Pisto X
 - Add Button to Trigger Mogo Piston
-- Add Extra Button for Movement of Other Device
+- Remap Controller Triggers to Intake Motor(s)
+	- Make this a Motor Group Just in Case
+	- Back Triggers
+- Remap Other Controller Triggers to Arm
+	- Front Triggers
+- Setup LVGL GUI
+	- Create Button to Change Drivetrain Movement
+
+- Add Temperary Button for Changing Drivetrain Movement
+
 - Write Different PID Systems
 	- Tune PID System
 	- Add Ziegler Nichols Tuning
+	- Setup Easy use of Jerry.IO

@@ -1,27 +1,26 @@
+#include "configuration.hpp"
 #include "main.h"
-#include "utils/config-enums.hpp"
-#include "utils/global-data.hpp"
 
 void on_center_button(void) {
-	switch (drivetrainMovement) {
-		case DrivetrainMovement::TankMovement:
-			drivetrainMovement = DrivetrainMovement::SingleStickArcadeMovement;
+	switch (Config::drivetrainMovement) {
+		case Config::DrivetrainMovement::Tank:
+			Config::drivetrainMovement = Config::DrivetrainMovement::SingleStickArcade;
 			break;
 
-		case DrivetrainMovement::SingleStickArcadeMovement:
-			drivetrainMovement = DrivetrainMovement::DoubleStickArcadeMovement;
+		case Config::DrivetrainMovement::SingleStickArcade:
+			Config::drivetrainMovement = Config::DrivetrainMovement::DoubleStickArcade;
 			break;
 
-		case DrivetrainMovement::DoubleStickArcadeMovement:
-			drivetrainMovement = DrivetrainMovement::SingleStickCurvatureMovement;
+		case Config::DrivetrainMovement::DoubleStickArcade:
+			Config::drivetrainMovement = Config::DrivetrainMovement::SingleStickCurvature;
 			break;
 
-		case DrivetrainMovement::SingleStickCurvatureMovement:
-			drivetrainMovement = DrivetrainMovement::DoubleStickCurvatureMovement;
+		case Config::DrivetrainMovement::SingleStickCurvature:
+			Config::drivetrainMovement = Config::DrivetrainMovement::DoubleStickCurvature;
 			break;
 
-		case DrivetrainMovement::DoubleStickCurvatureMovement:
-			drivetrainMovement = DrivetrainMovement::TankMovement;
+		case Config::DrivetrainMovement::DoubleStickCurvature:
+			Config::drivetrainMovement = Config::DrivetrainMovement::Tank;
 			break;
 	}
 }

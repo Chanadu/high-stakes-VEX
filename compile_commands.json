@@ -31,11 +31,11 @@
             "-funwind-tables",
             "--std=gnu++20",
             "-o",
-            "bin/utils/screen-displays.cpp.o",
-            "src/utils/screen-displays.cpp"
+            "bin/utils/devices.cpp.o",
+            "src/utils/devices.cpp"
         ],
         "directory": "/home/chanadu/Folders/CodingThings/VEXRobotics/1965MHighStakes",
-        "file": "src/utils/screen-displays.cpp"
+        "file": "src/utils/devices.cpp"
     },
     {
         "arguments": [
@@ -126,7 +126,7 @@
             "-isystem/usr/lib/gcc/arm-none-eabi/14.1.0/include-fixed",
             "-isystem/usr/lib/gcc/arm-none-eabi/14.1.0/../../../../arm-none-eabi/include",
             "-iquote./include",
-            "-iquote./include/utils/",
+            "-iquote./include/autonomous/",
             "-mcpu=cortex-a9",
             "-mfpu=neon-fp16",
             "-mfloat-abi=softfp",
@@ -145,87 +145,11 @@
             "-funwind-tables",
             "--std=gnu++20",
             "-o",
-            "bin/utils/global-data.cpp.o",
-            "src/utils/global-data.cpp"
+            "bin/autonomous/autonomous.cpp.o",
+            "src/autonomous/autonomous.cpp"
         ],
         "directory": "/home/chanadu/Folders/CodingThings/VEXRobotics/1965MHighStakes",
-        "file": "src/utils/global-data.cpp"
-    },
-    {
-        "arguments": [
-            "clang++",
-            "-c",
-            "-target",
-            "armv7ar-none-none-eabi",
-            "-isystem/usr/lib/gcc/arm-none-eabi/14.1.0/../../../../arm-none-eabi/include/c++/14.1.0",
-            "-isystem/usr/lib/gcc/arm-none-eabi/14.1.0/../../../../arm-none-eabi/include/c++/14.1.0/arm-none-eabi/thumb/v7+fp/softfp",
-            "-isystem/usr/lib/gcc/arm-none-eabi/14.1.0/../../../../arm-none-eabi/include/c++/14.1.0/backward",
-            "-isystem/usr/lib/gcc/arm-none-eabi/14.1.0/include",
-            "-isystem/usr/lib/gcc/arm-none-eabi/14.1.0/include-fixed",
-            "-isystem/usr/lib/gcc/arm-none-eabi/14.1.0/../../../../arm-none-eabi/include",
-            "-iquote./include",
-            "-iquote./include/./",
-            "-mcpu=cortex-a9",
-            "-mfpu=neon-fp16",
-            "-mfloat-abi=softfp",
-            "-Os",
-            "-g",
-            "-D_POSIX_THREADS",
-            "-D_UNIX98_THREAD_MUTEX_ATTRIBUTES",
-            "-D_POSIX_TIMERS",
-            "-D_POSIX_MONOTONIC_CLOCK",
-            "-D_PROS_INCLUDE_LIBLVGL_LLEMU_H",
-            "-D_PROS_INCLUDE_LIBLVGL_LLEMU_HPP",
-            "-Wno-psabi",
-            "-ffunction-sections",
-            "-fdata-sections",
-            "-fdiagnostics-color",
-            "-funwind-tables",
-            "--std=gnu++20",
-            "-o",
-            "bin/setup-devices.cpp.o",
-            "src/setup-devices.cpp"
-        ],
-        "directory": "/home/chanadu/Folders/CodingThings/VEXRobotics/1965MHighStakes",
-        "file": "src/setup-devices.cpp"
-    },
-    {
-        "arguments": [
-            "clang++",
-            "-c",
-            "-target",
-            "armv7ar-none-none-eabi",
-            "-isystem/usr/lib/gcc/arm-none-eabi/14.1.0/../../../../arm-none-eabi/include/c++/14.1.0",
-            "-isystem/usr/lib/gcc/arm-none-eabi/14.1.0/../../../../arm-none-eabi/include/c++/14.1.0/arm-none-eabi/thumb/v7+fp/softfp",
-            "-isystem/usr/lib/gcc/arm-none-eabi/14.1.0/../../../../arm-none-eabi/include/c++/14.1.0/backward",
-            "-isystem/usr/lib/gcc/arm-none-eabi/14.1.0/include",
-            "-isystem/usr/lib/gcc/arm-none-eabi/14.1.0/include-fixed",
-            "-isystem/usr/lib/gcc/arm-none-eabi/14.1.0/../../../../arm-none-eabi/include",
-            "-iquote./include",
-            "-iquote./include/./",
-            "-mcpu=cortex-a9",
-            "-mfpu=neon-fp16",
-            "-mfloat-abi=softfp",
-            "-Os",
-            "-g",
-            "-D_POSIX_THREADS",
-            "-D_UNIX98_THREAD_MUTEX_ATTRIBUTES",
-            "-D_POSIX_TIMERS",
-            "-D_POSIX_MONOTONIC_CLOCK",
-            "-D_PROS_INCLUDE_LIBLVGL_LLEMU_H",
-            "-D_PROS_INCLUDE_LIBLVGL_LLEMU_HPP",
-            "-Wno-psabi",
-            "-ffunction-sections",
-            "-fdata-sections",
-            "-fdiagnostics-color",
-            "-funwind-tables",
-            "--std=gnu++20",
-            "-o",
-            "bin/main.cpp.o",
-            "src/main.cpp"
-        ],
-        "directory": "/home/chanadu/Folders/CodingThings/VEXRobotics/1965MHighStakes",
-        "file": "src/main.cpp"
+        "file": "src/autonomous/autonomous.cpp"
     },
     {
         "arguments": [
@@ -316,6 +240,44 @@
             "-isystem/usr/lib/gcc/arm-none-eabi/14.1.0/include-fixed",
             "-isystem/usr/lib/gcc/arm-none-eabi/14.1.0/../../../../arm-none-eabi/include",
             "-iquote./include",
+            "-iquote./include/utils/",
+            "-mcpu=cortex-a9",
+            "-mfpu=neon-fp16",
+            "-mfloat-abi=softfp",
+            "-Os",
+            "-g",
+            "-D_POSIX_THREADS",
+            "-D_UNIX98_THREAD_MUTEX_ATTRIBUTES",
+            "-D_POSIX_TIMERS",
+            "-D_POSIX_MONOTONIC_CLOCK",
+            "-D_PROS_INCLUDE_LIBLVGL_LLEMU_H",
+            "-D_PROS_INCLUDE_LIBLVGL_LLEMU_HPP",
+            "-Wno-psabi",
+            "-ffunction-sections",
+            "-fdata-sections",
+            "-fdiagnostics-color",
+            "-funwind-tables",
+            "--std=gnu++20",
+            "-o",
+            "bin/utils/configuration.cpp.o",
+            "src/utils/configuration.cpp"
+        ],
+        "directory": "/home/chanadu/Folders/CodingThings/VEXRobotics/1965MHighStakes",
+        "file": "src/utils/configuration.cpp"
+    },
+    {
+        "arguments": [
+            "clang++",
+            "-c",
+            "-target",
+            "armv7ar-none-none-eabi",
+            "-isystem/usr/lib/gcc/arm-none-eabi/14.1.0/../../../../arm-none-eabi/include/c++/14.1.0",
+            "-isystem/usr/lib/gcc/arm-none-eabi/14.1.0/../../../../arm-none-eabi/include/c++/14.1.0/arm-none-eabi/thumb/v7+fp/softfp",
+            "-isystem/usr/lib/gcc/arm-none-eabi/14.1.0/../../../../arm-none-eabi/include/c++/14.1.0/backward",
+            "-isystem/usr/lib/gcc/arm-none-eabi/14.1.0/include",
+            "-isystem/usr/lib/gcc/arm-none-eabi/14.1.0/include-fixed",
+            "-isystem/usr/lib/gcc/arm-none-eabi/14.1.0/../../../../arm-none-eabi/include",
+            "-iquote./include",
             "-iquote./include/./",
             "-mcpu=cortex-a9",
             "-mfpu=neon-fp16",
@@ -335,11 +297,11 @@
             "-funwind-tables",
             "--std=gnu++20",
             "-o",
-            "bin/configuration.cpp.o",
-            "src/configuration.cpp"
+            "bin/main.cpp.o",
+            "src/main.cpp"
         ],
         "directory": "/home/chanadu/Folders/CodingThings/VEXRobotics/1965MHighStakes",
-        "file": "src/configuration.cpp"
+        "file": "src/main.cpp"
     },
     {
         "arguments": [
@@ -354,7 +316,7 @@
             "-isystem/usr/lib/gcc/arm-none-eabi/14.1.0/include-fixed",
             "-isystem/usr/lib/gcc/arm-none-eabi/14.1.0/../../../../arm-none-eabi/include",
             "-iquote./include",
-            "-iquote./include/autonomous/",
+            "-iquote./include/utils/",
             "-mcpu=cortex-a9",
             "-mfpu=neon-fp16",
             "-mfloat-abi=softfp",
@@ -373,10 +335,10 @@
             "-funwind-tables",
             "--std=gnu++20",
             "-o",
-            "bin/autonomous/autonomous.cpp.o",
-            "src/autonomous/autonomous.cpp"
+            "bin/utils/screen-displays.cpp.o",
+            "src/utils/screen-displays.cpp"
         ],
         "directory": "/home/chanadu/Folders/CodingThings/VEXRobotics/1965MHighStakes",
-        "file": "src/autonomous/autonomous.cpp"
+        "file": "src/utils/screen-displays.cpp"
     }
 ]

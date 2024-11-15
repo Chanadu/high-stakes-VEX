@@ -1,5 +1,5 @@
 #include "main.h"
-#include "utils/screen-displays.hpp"
+#include "screen-displays.hpp"
 
 // https://lemlib.readthedocs.io/en/stable/tutorials/4_pid_tuning.html
 void tuneAngularPID(lemlib::Chassis& chassis) {
