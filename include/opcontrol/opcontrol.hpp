@@ -1,9 +1,6 @@
-#ifndef _OPCONTROL_HPP_
-#define _OPCONTROL_HPP_
-
-#include "../main.h"
-#include "../utils/config-enums.hpp"
+#ifndef OPCONTROL_HPP
+#define OPCONTROL_HPP
 
 extern void opcontrolRunner();
 
-#endif	// _OPCONTROL_HPP_
+#endif	// OPCONTROL_HPP

@@ -1,6 +1,6 @@
-#ifndef _GUI_HPP_
-#define _GUI_HPP_
+#ifndef GUI_HPP
+#define GUI_HPP
 
-extern void gui(void);
+extern void gui();
 
-#endif	// _GUI_HPP_
+#endif	// GUI_HPP

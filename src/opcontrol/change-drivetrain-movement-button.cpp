@@ -1,7 +1,7 @@
 #include "configuration.hpp"
 #include "main.h"
 
-void on_center_button(void) {
+void on_center_button() {
 	switch (Config::drivetrainMovement) {
 		case Config::DrivetrainMovement::Tank:
 			Config::drivetrainMovement = Config::DrivetrainMovement::SingleStickArcade;

@@ -1,9 +1,6 @@
-#ifndef _CHANGE_DRIVETRAIN_MOVEMENT_BUTTON_HPP_
-#define _CHANGE_DRIVETRAIN_MOVEMENT_BUTTON_HPP_
+#ifndef CHANGE_DRIVETRAIN_MOVEMENT_BUTTON_HPP
+#define CHANGE_DRIVETRAIN_MOVEMENT_BUTTON_HPP
 
-#include "../main.h"
-#include "../utils/config-enums.hpp"
+extern void on_center_button();
 
-extern void on_center_button(void);
-
-#endif	// _CHANGE_DRIVETRAIN_MOVEMENT_BUTTON_HPP_
+#endif	// CHANGE_DRIVETRAIN_MOVEMENT_BUTTON_HPP

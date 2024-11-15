@@ -1,10 +1,7 @@
-#ifndef _DRIVE_TRAIN_MOVEMENT_HPP_
-#define _DRIVE_TRAIN_MOVEMENT_HPP_
+#ifndef DRIVE_TRAIN_MOVEMENT_HPP
+#define DRIVE_TRAIN_MOVEMENT_HPP
 
-#include "../main.h"
-#include "../utils/config-enums.hpp"
-
-extern void drivetrainMovementController(int& i);
+extern void drivetrainMovementController(short& i);
 
 extern void tankControl();
 extern void singleStickArcadeControl();
@@ -12,4 +9,4 @@ extern void doubleStickArcadeControl();
 extern void singleStickCurvatureControl();
 extern void doubleStickCurvatureControl();
 
-#endif	// _DRIVE_TRAIN_MOVEMENT_HPP_
+#endif	// DRIVE_TRAIN_MOVEMENT_HPP

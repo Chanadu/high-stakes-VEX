@@ -9,7 +9,7 @@
 [[noreturn]]void opcontrolRunner() {
 	pros::lcd::register_btn1_cb(on_center_button);
 	while (true) {
-		int i = 0;
+		short i = 0;
 
 		batteryDisplay(Devices::controller, i);
 		i++;

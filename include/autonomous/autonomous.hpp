@@ -1,8 +1,6 @@
-#ifndef _AUTONOMOUS_HPP_
-#define _AUTONOMOUS_HPP_
+#ifndef AUTONOMOUS_HPP
+#define AUTONOMOUS_HPP
 
-#include "../main.h"
+extern void autonomousRunner();
 
-extern void autonomousRunner(pros::Controller& controller, lemlib::Chassis& chassis);
-
-#endif	// _AUTONOMOUS_HPP_
+#endif	// AUTONOMOUS_HPP

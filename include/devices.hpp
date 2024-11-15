@@ -1,5 +1,5 @@
-#ifndef _SETUP_DEVICES_HPP_
-#define _SETUP_DEVICES_HPP_
+#ifndef SETUP_DEVICES_HPP
+#define SETUP_DEVICES_HPP
 
 #include "main.h"
 
@@ -27,4 +27,4 @@ extern pros::adi::DigitalOut mogoHolderPiston;
 
 extern void initializeDevices(lemlib::Chassis& chassis);
 
-#endif	// _SETUP_DEVICES_HPP
+#endif	// SETUP_DEVICES_HPP

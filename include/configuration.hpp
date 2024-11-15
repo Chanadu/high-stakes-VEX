@@ -1,29 +1,28 @@
-#ifndef _CONFIGURATION_HPP_
-#define _CONFIGURATION_HPP_
+#ifndef CONFIGURATION_HPP
+#define CONFIGURATION_HPP
 
 #include "main.h"
-#include "utils/config-enums.hpp"
 
 namespace Config {
-extern double drivetrainTrackWidth;
-extern double drivetrainWheelbaseWidth;
-extern double drivetrainWheelRPM;
-extern double drivetrainHorizontalDrift;
+extern const float drivetrainTrackWidth;
+extern const float drivetrainWheelbaseWidth;
+extern const float drivetrainWheelRPM;
+extern const float drivetrainHorizontalDrift;
 
 extern double intakeVelocity;  // 0 - 1
 
-extern float drivetrainWheelType;
+extern const float drivetrainWheelType;
 
-extern double maxControllerValue;
+extern const float maxControllerValue;
 
 extern double movementVelocityPercentage;  // 0 - 1
 extern double turningVelocityPercentage;   // 0 - 1
 
-extern double joystickThresholdPercentage;		  // 0 - 1
-extern double outputMovementThresholdPercentage;  // 0 - 1
+extern float joystickThresholdPercentage;		  // 0 - 1
+extern float outputMovementThresholdPercentage;  // 0 - 1
 
-extern double lateralCurveGain;
-extern double angularCurveGain;
+extern float lateralCurveGain;
+extern float angularCurveGain;
 
 extern lemlib::ControllerSettings lateralMovementController;
 extern lemlib::ControllerSettings angularMovementController;
@@ -39,4 +38,4 @@ enum class DrivetrainMovement {
 extern DrivetrainMovement drivetrainMovement;
 }  // namespace Config
 
-#endif	// _CONFIGURATION_HPP_
+#endif	// CONFIGURATION_HPP

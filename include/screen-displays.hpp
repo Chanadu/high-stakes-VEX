@@ -1,12 +1,12 @@
 
-#ifndef _SCREEN_DISPLAYS_HPP_
-#define _SCREEN_DISPLAYS_HPP_
+#ifndef SCREEN_DISPLAYS_HPP
+#define SCREEN_DISPLAYS_HPP
 
 #include "../main.h"
 
-extern void initializeDevices(void);
+extern void initializeDevices();
 
-extern void batteryDisplay(pros::Controller& controller, int& i);
-extern void chassisPositionDisplay(lemlib::Chassis& chassis, int& i);
+extern void batteryDisplay(pros::Controller& controller, short& i);
+extern void chassisPositionDisplay(lemlib::Chassis& chassis, short& i);
 
-#endif	// _SCREEN_DISPLAYS_HPP_
+#endif	// SCREEN_DISPLAYS_HPP
