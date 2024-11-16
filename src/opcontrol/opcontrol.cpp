@@ -13,6 +13,11 @@
 			Devices::controller.set_text(i, 0, std::format("{:<15}", Config::controllerStrings[i]));
 			pros::delay(50);
 		}
+		if (!Config::controllerRumblePattern.empty()) {
+			Devices::controller.rumble(Config::controllerRumblePattern.c_str());
+			Config::controllerRumblePattern = "";
+		}
+		pros::delay(50);
 	}
 }
 
@@ -30,10 +35,13 @@
 		if (Devices::controller.get_digital_new_press(pros::E_CONTROLLER_DIGITAL_B)) {
 			incrementDrivetrainMovement(lineNumber);
 		}
-
+		if (Devices::controller.get_digital_new_press(pros::E_CONTROLLER_DIGITAL_X)) {
+			Config::controllerRumblePattern = ".-.-..";
+		};
 		intakeMotorControl();
 		armMotorControl();
 		holderPistonControl();
+
 		// pros::screen::print(TEXT_MEDIUM, i++, "Testing");
 		// gui();
 		pros::delay(20);

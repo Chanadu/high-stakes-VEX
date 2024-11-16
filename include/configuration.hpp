@@ -53,6 +53,7 @@ inline const std::unordered_map<DrivetrainMovement, std::string> drivetrainMovem
 
 extern DrivetrainMovement drivetrainMovement;
 extern std::string controllerStrings[3];
+extern std::string controllerRumblePattern;
 }  // namespace Config
 
 #endif	// CONFIGURATION_HPP

@@ -52,5 +52,5 @@ std::string controllerStrings[3] = {
 	"Line 2",
 	"Line 3",
 };
-
+std::string controllerRumblePattern;
 };	// namespace Config
