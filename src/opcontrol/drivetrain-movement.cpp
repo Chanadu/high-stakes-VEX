@@ -28,35 +28,35 @@ void doubleStickCurvatureControl() {
 	Devices::chassis.curvature(leftY, rightX);
 }
 
-void drivetrainMovementController(short& i) {
-	pros::lcd::clear_line(i);
+void drivetrainMovementController(short& lineNumber) {
+	pros::lcd::clear_line(lineNumber);
 
 	switch (Config::drivetrainMovement) {
 		case Config::DrivetrainMovement::Tank:
-			pros::lcd::print(i, "Tank Movement");
+			pros::lcd::print(lineNumber, "Tank Movement");
 			tankControl();
 			break;
 
 		case Config::DrivetrainMovement::SingleStickArcade:
-			pros::lcd::print(i, "Single Stick Arcade Movement");
+			pros::lcd::print(lineNumber, "Single Stick Arcade Movement");
 			singleStickArcadeControl();
 			break;
 
 		case Config::DrivetrainMovement::DoubleStickArcade:
-			pros::lcd::print(i, "Double Stick Arcade Movement");
+			pros::lcd::print(lineNumber, "Double Stick Arcade Movement");
 			doubleStickArcadeControl();
 			break;
 
 		case Config::DrivetrainMovement::SingleStickCurvature:
-			pros::lcd::print(i, "Single Stick Curvature Movement");
+			pros::lcd::print(lineNumber, "Single Stick Curvature Movement");
 			singleStickCurvatureControl();
 			break;
 
 		case Config::DrivetrainMovement::DoubleStickCurvature:
-			pros::lcd::print(i, "Double Stick Curvature Movement");
+			pros::lcd::print(lineNumber, "Double Stick Curvature Movement");
 			doubleStickCurvatureControl();
 			break;
 	}
 
-	++i;
+	++lineNumber;
 }

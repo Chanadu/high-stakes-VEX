@@ -14,10 +14,10 @@ void tuneLateralPID() {
 }
 
 void autonomousRunner() {
-	short i = 0;
-	pros::lcd::print(i++, "AUTON RUNNING");
-	++i;
-	batteryDisplay(i);
+	short lineNumber = 0;
+	pros::lcd::print(lineNumber++, "AUTON RUNNING");
+	++lineNumber;
+	batteryDisplay(lineNumber);
 
 	tuneAngularPID();
 	// tuneLateralPID(&chassis);

@@ -35,11 +35,11 @@ void holderPistonControl() {
 [[noreturn]] void opcontrolRunner() {
 	pros::lcd::register_btn1_cb(changeDrivetrainMovement);
 	while (true) {
-		short i = 0;
+		short lineNumber = 0;
 
-		batteryDisplay(i);
-		i++;
-		drivetrainMovementController(i);
+		batteryDisplay(lineNumber);
+		lineNumber++;
+		drivetrainMovementController(lineNumber);
 		if (Devices::controller.get_digital_new_press(pros::E_CONTROLLER_DIGITAL_B)) {
 			changeDrivetrainMovement();
 		}
