@@ -9,11 +9,11 @@
 
 [[noreturn]] void controllerLinePrinting(void* param) {
 	while (true) {
-		Devices::controller.set_text(0, 0, "Test");
+		Devices::controller.set_text(0, 0, Config::controllerStrings[0]);
 		pros::delay(50);
-		Devices::controller.set_text(1, 0, "Test1");
+		Devices::controller.set_text(1, 0, Config::controllerStrings[1]);
 		pros::delay(50);
-		Devices::controller.set_text(2, 0, "Test2");
+		Devices::controller.set_text(2, 0, Config::controllerStrings[2]);
 		pros::delay(50);
 	}
 }
@@ -30,7 +30,7 @@
 		lineNumber++;
 		drivetrainMovementController(lineNumber);
 		if (Devices::controller.get_digital_new_press(pros::E_CONTROLLER_DIGITAL_B)) {
-			changeDrivetrainMovement();
+			changeDrivetrainMovement(lineNumber);
 		}
 
 		intakeMotorControl();

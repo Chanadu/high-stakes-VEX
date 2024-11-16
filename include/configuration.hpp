@@ -18,8 +18,8 @@ extern const float maxControllerValue;
 extern double movementVelocityPercentage;  // 0 - 1
 extern double turningVelocityPercentage;   // 0 - 1
 
-extern float joystickThresholdPercentage;		  // 0 - 1
-extern float outputMovementThresholdPercentage;  // 0 - 1
+extern float joystickThresholdPercentage;		 // 0 - 1
+extern float outputMovementThresholdPercentage;	 // 0 - 1
 
 extern float lateralCurveGain;
 extern float angularCurveGain;
@@ -36,6 +36,7 @@ enum class DrivetrainMovement {
 };
 
 extern DrivetrainMovement drivetrainMovement;
+extern std::string controllerStrings[3];
 }  // namespace Config
 
 #endif	// CONFIGURATION_HPP

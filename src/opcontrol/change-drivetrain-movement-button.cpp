@@ -4,31 +4,38 @@
 #include "main.h"
 
 void changeDrivetrainMovement() {
+	short i = 0;
+	changeDrivetrainMovement(i);
+}
+void changeDrivetrainMovement(short& lineNumber) {
+	std::string drivetrainMovementString;
 	switch (Config::drivetrainMovement) {
 		case Config::DrivetrainMovement::Tank:
 			Config::drivetrainMovement = Config::DrivetrainMovement::SingleStickArcade;
-			Devices::controller.print(0, 0, "Changed Drivetrain Movement to SSA");
+			drivetrainMovementString = "SSA";
 			break;
 
 		case Config::DrivetrainMovement::SingleStickArcade:
 			Config::drivetrainMovement = Config::DrivetrainMovement::DoubleStickArcade;
-			Devices::controller.print(0, 0, "Changed Drivetrain Movement to DSA");
+			drivetrainMovementString = "DSA";
 			break;
 
 		case Config::DrivetrainMovement::DoubleStickArcade:
 			Config::drivetrainMovement = Config::DrivetrainMovement::SingleStickCurvature;
-			Devices::controller.print(0, 0, "Changed Drivetrain Movement to SSC");
+			drivetrainMovementString = "SSC";
 			break;
 
 		case Config::DrivetrainMovement::SingleStickCurvature:
 			Config::drivetrainMovement = Config::DrivetrainMovement::DoubleStickCurvature;
-			Devices::controller.print(0, 0, "Changed Drivetrain Movement to DSC");
+			drivetrainMovementString = "DSC";
 			break;
 
 		case Config::DrivetrainMovement::DoubleStickCurvature:
 			Config::drivetrainMovement = Config::DrivetrainMovement::Tank;
-			Devices::controller.print(0, 0, "Changed Drivetrain Movement to Tank");
+			drivetrainMovementString = "TAN";
 			break;
 	}
-	Devices::controller.print(1, 0, "Changed Drivetrain Movement to Tank");
+	pros::lcd::print(lineNumber++, "Changed Drivetrain Movement to %s",
+					 drivetrainMovementString.c_str());
+	Config::controllerStrings[2] = "DV MV: " + drivetrainMovementString;
 }
