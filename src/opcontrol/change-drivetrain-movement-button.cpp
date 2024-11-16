@@ -3,38 +3,23 @@
 #include "devices.hpp"
 #include "main.h"
 
-void changeDrivetrainMovement() {
+void incrementDrivetrainMovement() {
 	short i = 0;
-	changeDrivetrainMovement(i);
+	incrementDrivetrainMovement(i);
 }
-void changeDrivetrainMovement(short& lineNumber) {
-	std::string drivetrainMovementString;
-	switch (Config::drivetrainMovement) {
-		case Config::DrivetrainMovement::Tank:
-			Config::drivetrainMovement = Config::DrivetrainMovement::SingleStickArcade;
-			drivetrainMovementString = "SSA";
-			break;
+void incrementDrivetrainMovement(short& lineNumber) {
+	const unsigned int indexOfDrivetrainMovement =
+		std::ranges::find(Config::drivetrainMovements, Config::drivetrainMovement) -
+		Config::drivetrainMovements.begin();
 
-		case Config::DrivetrainMovement::SingleStickArcade:
-			Config::drivetrainMovement = Config::DrivetrainMovement::DoubleStickArcade;
-			drivetrainMovementString = "DSA";
-			break;
+	const unsigned int newIndex =
+		(indexOfDrivetrainMovement + 1) % Config::drivetrainMovements.size();
 
-		case Config::DrivetrainMovement::DoubleStickArcade:
-			Config::drivetrainMovement = Config::DrivetrainMovement::SingleStickCurvature;
-			drivetrainMovementString = "SSC";
-			break;
+	Config::drivetrainMovement = Config::drivetrainMovements.at(newIndex);
 
-		case Config::DrivetrainMovement::SingleStickCurvature:
-			Config::drivetrainMovement = Config::DrivetrainMovement::DoubleStickCurvature;
-			drivetrainMovementString = "DSC";
-			break;
+	const std::string& drivetrainMovementString =
+		Config::drivetrainMovementToAbbr.at(Config::drivetrainMovement);
 
-		case Config::DrivetrainMovement::DoubleStickCurvature:
-			Config::drivetrainMovement = Config::DrivetrainMovement::Tank;
-			drivetrainMovementString = "TAN";
-			break;
-	}
 	pros::lcd::print(lineNumber++, "Changed Drivetrain Movement to %s",
 					 drivetrainMovementString.c_str());
 	Config::controllerStrings[2] = "DV MV: " + drivetrainMovementString;

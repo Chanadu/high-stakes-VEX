@@ -47,5 +47,10 @@ lemlib::ControllerSettings angularMovementController(2,	   // ProportionalGain
 													 0	   // MaximumAcceleration
 );
 DrivetrainMovement drivetrainMovement = DrivetrainMovement::DoubleStickArcade;
-std::string controllerStrings[3] = {"Line 1", "Line 2", "Line 3"};
-}  // namespace Config
+std::string controllerStrings[3] = {
+	"Line 1",
+	"Line 2",
+	"Line 3",
+};
+
+};	// namespace Config

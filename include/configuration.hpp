@@ -35,6 +35,22 @@ enum class DrivetrainMovement {
 	DoubleStickCurvature
 };
 
+inline const std::vector drivetrainMovements{
+	DrivetrainMovement::Tank,
+	DrivetrainMovement::SingleStickArcade,
+	DrivetrainMovement::DoubleStickArcade,
+	DrivetrainMovement::SingleStickCurvature,
+	DrivetrainMovement::DoubleStickCurvature,
+};
+
+inline const std::unordered_map<DrivetrainMovement, std::string> drivetrainMovementToAbbr{
+	{DrivetrainMovement::Tank, "TAN"},
+	{DrivetrainMovement::SingleStickArcade, "SSA"},
+	{DrivetrainMovement::DoubleStickArcade, "DSA"},
+	{DrivetrainMovement::SingleStickCurvature, "SSC"},
+	{DrivetrainMovement::DoubleStickCurvature, "DSC"},
+};
+
 extern DrivetrainMovement drivetrainMovement;
 extern std::string controllerStrings[3];
 }  // namespace Config

@@ -64,4 +64,9 @@ void initializeDevices() {
 	pros::lcd::initialize();
 	// pros::screen::set_pen(pros::Color::white);
 	Devices::chassis.calibrate();  // Setup Sensors
+
+	Config::controllerStrings[0] =
+		std::format("Battery:{:>3}%", static_cast<int>(pros::battery::get_capacity()));
+	Config::controllerStrings[2] =
+		"DV MV: " + Config::drivetrainMovementToAbbr.at(Config::drivetrainMovement);
 }

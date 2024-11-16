@@ -1,4 +1,5 @@
 #include "opcontrol/device-controller.hpp"
+#include "configuration.hpp"
 #include "devices.hpp"
 
 void intakeMotorControl() {
@@ -8,6 +9,7 @@ void intakeMotorControl() {
 							   Devices::controller.get_digital(Devices::intakeOutButton) * 127;
 		// ReSharper disable once CppExpressionWithoutSideEffects
 		Devices::intakeMotorGroup.move(motorPower);
+		Config::controllerStrings[1] = "Intake: " + std::format("{}", motorPower);
 	}
 }
 
@@ -18,11 +20,14 @@ void armMotorControl() {
 							   Devices::controller.get_digital(Devices::armOutButton) * 127;
 		// ReSharper disable once CppExpressionWithoutSideEffects
 		Devices::intakeMotorGroup.move(motorPower);
+		Config::controllerStrings[1] = "Arm: " + std::format("{}", motorPower);
 	}
 }
 
 void holderPistonControl() {
 	if (Devices::controller.get_digital_new_press(Devices::holderPistonButton)) {
 		Devices::holderPiston.toggle();
+		Config::controllerStrings[1] =
+			"Piston: " + std::format("{}", Devices::holderPiston.is_extended());
 	}
 }

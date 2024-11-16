@@ -9,6 +9,8 @@ void batteryDisplay(short& lineNumber) {
 	// 											   : pros::Color::green);
 	pros::lcd::print(lineNumber++, "Battery: %3d%%", static_cast<int>(batteryPercentage));
 	const int controllerBatteryPercentage = Devices::controller.get_battery_capacity();
+	Config::controllerStrings[0] =
+		std::format("Battery:{:>3}%", static_cast<int>(batteryPercentage));
 	// pros::screen::set_pen(controllerBatteryPercentage < 50 ? pros::Color::red
 	// 					  : controllerBatteryPercentage < 75
 	// 						  ? pros::Color::yellow
