@@ -8,7 +8,6 @@
 void tuneAngularPID() {
 	Devices::chassis->setPose(0, 0, 0);
 	Devices::chassis->turnToHeading(90, 100000);
-
 }
 
 void tuneLateralPID() {
@@ -24,4 +23,17 @@ void autonomousRunner() {
 
 	tuneAngularPID();
 	// tuneLateralPID(&chassis);
+}
+
+void runAuton() {
+	// path file name is "example.txt".
+	// "." is replaced with "_" to overcome c++ limitations
+	ASSET(example_txt);
+	// ASSET(example2_txt)
+	Devices::chassis->setPose(0, 0, 0);
+	// lookahead distance: 15 inches
+	// timeout: 2000 ms
+	Devices::chassis->follow(example_txt, 15, 2000);
+	// follow the next path, but with the robot going backwards
+	// Devices::chassis->follow(example2_txt, 15, 2000, false);
 }
