@@ -32,7 +32,12 @@ extern lemlib::OdomSensors odomSensors;
 extern lemlib::ControllerSettings lateralMovementController;
 extern lemlib::ControllerSettings angularMovementController;
 
-extern lemlib::Chassis chassis;
+extern lemlib::ExpoDriveCurve driveCurve;
+extern lemlib::ExpoDriveCurve turnCurve;
+
+extern lemlib::Chassis* chassis;
+
+extern void setChassis(lemlib::Chassis* chassis);
 }  // namespace Devices
 
 extern void initializeDevices();

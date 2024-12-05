@@ -50,24 +50,32 @@ lemlib::ExpoDriveCurve turnCurve(													  //
 );
 
 // create the chassis
-lemlib::Chassis chassis(				//
-	drivetrain,							// drivetrain settings
-	Config::lateralMovementController,	// lateral PID settings
-	Config::angularMovementController,	// angular PID settings
-	odomSensors,						// odometry sensors
-	&driveCurve,						// throttle curve
-	&turnCurve							// steering curve
+lemlib::Chassis* chassis = new lemlib::Chassis(	 //
+	drivetrain,									 // drivetrain settings
+	Config::lateralMovementController,			 // lateral PID settings
+	Config::angularMovementController,			 // angular PID settings
+	odomSensors,								 // odometry sensors
+	&driveCurve,								 // throttle curve
+	&turnCurve									 // steering curve
 );
+
+void setChassis(lemlib::Chassis* c) {
+	delete chassis;
+	chassis = c;
+	chassis->calibrate();
+}
+
 }  // namespace Devices
 
 void initializeDevices() {
 	pros::lcd::initialize();
 	// pros::screen::set_pen(pros::Color::white);
-	Devices::chassis.calibrate();  // Setup Sensors
+	Devices::chassis->calibrate();	// Setup Sensors
 
 	Config::controllerStrings[0] =
-		std::format("Battery:{:>3}%", static_cast<int>(pros::battery::get_capacity()));
-	Config::controllerStrings[1] = "input?";
-	Config::controllerStrings[2] =
-		"DV MV: " + Config::drivetrainMovementToAbbr.at(Config::drivetrainMovement);
+		fmt::format("Battery:{:>3}%", static_cast<int>(pros::battery::get_capacity()));
+	Config::controllerStrings[1] = "";
+	Config::controllerStrings[2] = "input?";
+	// Config::controllerStrings[2] =
+	// 	"DV MV: " + Config::drivetrainMovementToAbbr.at(Config::drivetrainMovement);
 }
