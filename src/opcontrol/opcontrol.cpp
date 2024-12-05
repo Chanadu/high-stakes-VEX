@@ -39,7 +39,7 @@ float slew = 0;
 float slewChange = 1;
 int counter = 0;
 
-void tuningAuton(AutonVars& currentlyChangingVar, short& lineNumber) {
+void tuningAngular(AutonVars& currentlyChangingVar, short& lineNumber) {
 	if (Devices::controller.get_digital_new_press(pros::E_CONTROLLER_DIGITAL_LEFT)) {
 		switch (currentlyChangingVar) {
 			case AutonVars::PROPORTIONAL_GAIN:
@@ -158,6 +158,124 @@ void tuningAuton(AutonVars& currentlyChangingVar, short& lineNumber) {
 	Config::controllerStrings[1] = fmt::format("{}: {}", name, value);
 }
 
+void tuningLateral(AutonVars& currentlyChangingVar, short& lineNumber) {
+	if (Devices::controller.get_digital_new_press(pros::E_CONTROLLER_DIGITAL_LEFT)) {
+		switch (currentlyChangingVar) {
+			case AutonVars::PROPORTIONAL_GAIN:
+				currentlyChangingVar = AutonVars::SLEW;
+				break;
+			case AutonVars::SLEW:
+				currentlyChangingVar = AutonVars::ANTI_WINDUP;
+				break;
+			case AutonVars::ANTI_WINDUP:
+				currentlyChangingVar = AutonVars::DERIVATIVE_GAIN;
+				break;
+			case AutonVars::DERIVATIVE_GAIN:
+				currentlyChangingVar = AutonVars::INTEGRAL_GAIN;
+				break;
+			case AutonVars::INTEGRAL_GAIN:
+				currentlyChangingVar = AutonVars::PROPORTIONAL_GAIN;
+				break;
+		}
+	} else if (Devices::controller.get_digital_new_press(pros::E_CONTROLLER_DIGITAL_RIGHT)) {
+		switch (currentlyChangingVar) {
+			case AutonVars::PROPORTIONAL_GAIN:
+				currentlyChangingVar = AutonVars::INTEGRAL_GAIN;
+				break;
+			case AutonVars::INTEGRAL_GAIN:
+				currentlyChangingVar = AutonVars::DERIVATIVE_GAIN;
+				break;
+			case AutonVars::DERIVATIVE_GAIN:
+				currentlyChangingVar = AutonVars::ANTI_WINDUP;
+				break;
+			case AutonVars::ANTI_WINDUP:
+				currentlyChangingVar = AutonVars::SLEW;
+				break;
+			case AutonVars::SLEW:
+				currentlyChangingVar = AutonVars::PROPORTIONAL_GAIN;
+				break;
+		}
+	}
+
+	int i = Devices::controller.get_digital_new_press(pros::E_CONTROLLER_DIGITAL_UP) -
+			Devices::controller.get_digital_new_press(pros::E_CONTROLLER_DIGITAL_DOWN);
+	pros::lcd::print(lineNumber, "i PRESSED (%d)", i);
+	bool changed = false;
+	if (i != 0) {
+		changed = true;
+	}
+	switch (currentlyChangingVar) {
+		case AutonVars::PROPORTIONAL_GAIN:
+			proportionalGain += i * proportionalGainChange;
+			break;
+		case AutonVars::INTEGRAL_GAIN:
+			integralGain += i * integralGainChange;
+			break;
+		case AutonVars::DERIVATIVE_GAIN:
+			derivativeGain += i * derivativeGainChange;
+			break;
+		case AutonVars::ANTI_WINDUP:
+			antiWindup += i * antiWindupChange;
+			break;
+		case AutonVars::SLEW:
+			slew += i * slewChange;
+			break;
+	}
+
+	if (changed) {
+		const lemlib::ControllerSettings tempController(proportionalGain,  // ProportionalGain
+														integralGain,	   // IntegralGain
+														derivativeGain,	   // DerivativeGain
+														antiWindup,		   // AntiWindup
+														1,				   // SmallErrorRange
+														100,			   // SmallErrorRangeTimeout
+														3,				   // LargeErrorRange
+														500,			   // LargeErrorRangeTimeout
+														slew			   // MaximumAcceleration
+		);
+		Devices::setChassis(new lemlib::Chassis(  //
+			Devices::drivetrain,				  // drivetrain settings
+			tempController,						  // lateral PID settings
+			Config::lateralMovementController,	  // angular PID settings
+			Devices::odomSensors,				  // odometry sensors
+			&Devices::driveCurve,				  // throttle curve
+			&Devices::turnCurve					  // steering curve
+			));
+	}
+	if (Devices::controller.get_digital_new_press(pros::E_CONTROLLER_DIGITAL_A)) {
+		// pros::lcd::print(lineNumber, "A PRESSED");
+		Config::controllerStrings[2] = fmt::format("APID: {}", counter);
+		counter++;
+		Devices::chassis->calibrate();
+		tuneLateralPID();
+	}
+	std::string name;
+	float value;
+
+	switch (currentlyChangingVar) {
+		case AutonVars::PROPORTIONAL_GAIN:
+			name = "PG";
+			value = proportionalGain;
+			break;
+		case AutonVars::INTEGRAL_GAIN:
+			name = "IG";
+			value = integralGain;
+			break;
+		case AutonVars::DERIVATIVE_GAIN:
+			name = "DG";
+			value = derivativeGain;
+			break;
+		case AutonVars::ANTI_WINDUP:
+			name = "AW";
+			value = antiWindup;
+			break;
+		case AutonVars::SLEW:
+			name = "S";
+			value = slew;
+			break;
+	}
+	Config::controllerStrings[1] = fmt::format("{}: {}", name, value);
+}
 void opcontrolRunner() {
 	pros::Task _(controllerLinePrinting, nullptr, TASK_PRIORITY_DEFAULT, TASK_STACK_DEPTH_DEFAULT,
 				 "Controller Line Task");
@@ -173,7 +291,8 @@ void opcontrolRunner() {
 		chassisPositionDisplay(lineNumber);
 
 		if (isTuningAuton) {
-			tuningAuton(currentlyChangingVar, lineNumber);
+			tuningAngular(currentlyChangingVar, lineNumber);
+			// tuningLateral(currentlyChangingVar, lineNumber);
 			pros::delay(20);
 			continue;
 		}
