@@ -6,16 +6,16 @@ namespace Devices {
 pros::Controller controller(pros::E_CONTROLLER_MASTER);
 
 // RESERVED PORTS:
+// 6, 7 -> Inconsistent
 // 21 -> Controller Receiver
-// 6, 7 -> Inconsistent Ports
 
 pros::MotorGroup leftMotorGroup({1, -2, 3}, pros::MotorGears::blue);
 pros::MotorGroup rightMotorGroup({-4, 5, -8}, pros::MotorGears::blue);
 
-pros::MotorGroup intakeMotorGroup({9, 10}, pros::MotorGears::red);
+pros::MotorGroup intakeMotorGroup({9, -10}, pros::MotorGears::red);
 pros::controller_digital_e_t intakeInButton = pros::E_CONTROLLER_DIGITAL_L2;
 pros::controller_digital_e_t intakeOutButton = pros::E_CONTROLLER_DIGITAL_L1;
-pros::Motor armMotor(8, pros::MotorGears::green);
+pros::Motor armMotor(12, pros::MotorGears::green);
 pros::controller_digital_e_t armInButton = pros::E_CONTROLLER_DIGITAL_R2;
 pros::controller_digital_e_t armOutButton = pros::E_CONTROLLER_DIGITAL_R1;
 
