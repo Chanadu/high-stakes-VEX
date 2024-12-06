@@ -7,18 +7,19 @@ pros::Controller controller(pros::E_CONTROLLER_MASTER);
 
 // RESERVED PORTS:
 // 21 -> Controller Receiver
+// 6, 7 -> Inconsistent Ports
 
 pros::MotorGroup leftMotorGroup({1, -2, 3}, pros::MotorGears::blue);
-pros::MotorGroup rightMotorGroup({-4, 5, -6}, pros::MotorGears::blue);
+pros::MotorGroup rightMotorGroup({-4, 5, -8}, pros::MotorGears::blue);
 
-pros::MotorGroup intakeMotorGroup({7}, pros::MotorGears::red);
+pros::MotorGroup intakeMotorGroup({9, 10}, pros::MotorGears::red);
 pros::controller_digital_e_t intakeInButton = pros::E_CONTROLLER_DIGITAL_L2;
 pros::controller_digital_e_t intakeOutButton = pros::E_CONTROLLER_DIGITAL_L1;
 pros::Motor armMotor(8, pros::MotorGears::green);
 pros::controller_digital_e_t armInButton = pros::E_CONTROLLER_DIGITAL_R2;
 pros::controller_digital_e_t armOutButton = pros::E_CONTROLLER_DIGITAL_R1;
 
-pros::Imu imu(9);
+pros::Imu imu(11);
 
 pros::adi::Pneumatics holderPiston('H', false, false);
 pros::controller_digital_e_t holderPistonButton = pros::E_CONTROLLER_DIGITAL_Y;
@@ -50,32 +51,26 @@ lemlib::ExpoDriveCurve turnCurve(													  //
 );
 
 // create the chassis
-lemlib::Chassis* chassis = new lemlib::Chassis(	 //
-	drivetrain,									 // drivetrain settings
-	Config::lateralMovementController,			 // lateral PID settings
-	Config::angularMovementController,			 // angular PID settings
-	odomSensors,								 // odometry sensors
-	&driveCurve,								 // throttle curve
-	&turnCurve									 // steering curve
+lemlib::Chassis chassis(				//
+	drivetrain,							// drivetrain settings
+	Config::lateralMovementController,	// lateral PID settings
+	Config::angularMovementController,	// angular PID settings
+	odomSensors,						// odometry sensors
+	&driveCurve,						// throttle curve
+	&turnCurve							// steering curve
 );
-
-void setChassis(lemlib::Chassis* c) {
-	delete chassis;
-	chassis = c;
-	chassis->calibrate();
-}
 
 }  // namespace Devices
 
 void initializeDevices() {
 	pros::lcd::initialize();
 	// pros::screen::set_pen(pros::Color::white);
-	Devices::chassis->calibrate();	// Setup Sensors
+	Devices::chassis.calibrate();  // Setup Sensors
 
 	Config::controllerStrings[0] =
-		fmt::format("Battery:{:>3}%", static_cast<int>(pros::battery::get_capacity()));
+		fmt::format("Battery: {:>3}%", static_cast<int>(pros::battery::get_capacity()));
 	Config::controllerStrings[1] = "";
-	Config::controllerStrings[2] = "input?";
+	Config::controllerStrings[2] = "";
 	// Config::controllerStrings[2] =
 	// 	"DV MV: " + Config::drivetrainMovementToAbbr.at(Config::drivetrainMovement);
 }

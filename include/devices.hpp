@@ -35,7 +35,7 @@ extern lemlib::ControllerSettings angularMovementController;
 extern lemlib::ExpoDriveCurve driveCurve;
 extern lemlib::ExpoDriveCurve turnCurve;
 
-extern lemlib::Chassis* chassis;
+extern lemlib::Chassis chassis;
 
 extern void setChassis(lemlib::Chassis* chassis);
 }  // namespace Devices
