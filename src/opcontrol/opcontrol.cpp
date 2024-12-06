@@ -7,6 +7,7 @@
 
 [[noreturn]] void opcontrolRunner() {
 	// pros::lcd::clear();
+	Config::controllerStrings[1] = "OP RUNNING";
 	while (true) {
 		short lineNumber = 0;
 		batteryDisplay(lineNumber);
