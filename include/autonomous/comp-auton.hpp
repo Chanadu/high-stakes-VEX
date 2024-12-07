@@ -1,6 +1,8 @@
 #ifndef COMP_AUTON_HPP
 #define COMP_AUTON_HPP
 
-extern void runAuton(bool flip);
+#include "autonomous/autonomous.hpp"
+
+extern void runAuton(AutonTypes autonType);
 
 #endif	// COMP_AUTON_HPP
