@@ -36,10 +36,20 @@ lemlib::ControllerSettings lateralMovementController(10,   // ProportionalGain
 );
 
 // angular PID controller
+// lemlib::ControllerSettings angularMovementController(2,	   // ProportionalGain
+// 													 0,	   // IntegralGain
+// 													 10,   // DerivativeGain
+// 													 3,	   // AntiWindup
+// 													 1,	   // SmallErrorRange
+// 													 100,  // SmallErrorRangeTimeout
+// 													 3,	   // LargeErrorRange
+// 													 500,  // LargeErrorRangeTimeout
+// 													 0	   // MaximumAcceleration
+// );
 lemlib::ControllerSettings angularMovementController(2,	   // ProportionalGain
 													 0,	   // IntegralGain
-													 10,   // DerivativeGain
-													 3,	   // AntiWindup
+													 0,   // DerivativeGain
+													 0,	   // AntiWindup
 													 1,	   // SmallErrorRange
 													 100,  // SmallErrorRangeTimeout
 													 3,	   // LargeErrorRange

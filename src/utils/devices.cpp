@@ -9,9 +9,9 @@ pros::Controller controller(pros::E_CONTROLLER_MASTER);
 // 6, 7 -> Inconsistent
 // 21 -> Controller Receiver
 
-pros::MotorGroup leftMotorGroup({1, -2, 3}, pros::MotorGears::blue);
+pros::MotorGroup leftMotorGroup({1, -12, 3}, pros::MotorGears::blue);
 pros::MotorGroup rightMotorGroup({-4, 5, -8}, pros::MotorGears::blue);
-
+ 
 pros::MotorGroup intakeMotorGroup({9, -10}, pros::MotorGears::red);
 pros::controller_digital_e_t intakeInButton = pros::E_CONTROLLER_DIGITAL_L2;
 pros::controller_digital_e_t intakeOutButton = pros::E_CONTROLLER_DIGITAL_L1;
@@ -60,17 +60,21 @@ lemlib::Chassis chassis(				//
 	&turnCurve							// steering curve
 );
 
-}  // namespace Devices
-
+}  // namespace Devices 
 void initializeDevices() {
 	pros::lcd::initialize();
 	// pros::screen::set_pen(pros::Color::white);
-	Devices::chassis.calibrate();  // Setup Sensors
+	Devices::chassis.calibrate();  // Set
+	Devices::leftMotorGroup.set_brake_mode(pros::E_MOTOR_BRAKE_HOLD);
+	Devices::rightMotorGroup.set_brake_mode(pros::E_MOTOR_BRAKE_HOLD);
 
 	Config::controllerStrings[0] =
 		fmt::format("Battery: {:>3}%", static_cast<int>(pros::battery::get_capacity()));
 	Config::controllerStrings[1] = "";
 	Config::controllerStrings[2] = "";
+
+	Devices::intakeMotorGroup.set_brake_mode(pros::E_MOTOR_BRAKE_HOLD);
+
 	// Config::controllerStrings[2] =
 	// 	"DV MV: " + Config::drivetrainMovementToAbbr.at(Config::drivetrainMovement);
 }

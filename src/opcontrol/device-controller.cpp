@@ -13,6 +13,8 @@ void intakeMotorControl() {
 	Config::controllerStrings[2] =
 		fmt::format("IT: {:.2} {:.2}", Devices::intakeMotorGroup.get_torque_all()[0],
 					Devices::intakeMotorGroup.get_torque_all()[1]);
+	pros::lcd::print(7, fmt::format("IT: {:.2} {:.2}", Devices::intakeMotorGroup.get_torque_all()[0],
+					Devices::intakeMotorGroup.get_torque_all()[1]).c_str());
 }
 
 void armMotorControl() {

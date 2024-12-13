@@ -6,8 +6,6 @@ if [[ "$OSTYPE" == "linux-gnu"* ]]; then
 fi
 
 preRunCommands() {
-	pros -- c --no-analytics upgrade
-	pros -- build-compile-commands --no-analytics
 	pros -- build --no-analytics
 	eval "$uploadCommand"
 }

@@ -1,0 +1,45 @@
+-11.318, 46.295, 100
+-13.113, 47.178, 100
+-14.907, 48.061, 100
+-16.702, 48.944, 100
+-18.496, 49.826, 100
+-20.291, 50.709, 100
+-22.086, 51.592, 100
+-23.88, 52.475, 100
+-25.675, 53.358, 100
+-27.469, 54.241, 100
+-29.264, 55.123, 100
+-31.059, 56.006, 100
+-32.853, 56.889, 100
+-34.648, 57.772, 100
+-34.156, 56.17, 100
+-33.426, 54.309, 100
+-32.695, 52.447, 97.932
+-31.964, 50.585, 95.303
+-31.233, 48.723, 92.6
+-30.503, 46.862, 89.815
+-29.772, 45, 86.941
+-29.041, 43.138, 83.968
+-28.31, 41.277, 80.887
+-27.58, 39.415, 77.683
+-26.849, 37.553, 74.342
+-26.118, 35.691, 70.843
+-25.387, 33.83, 67.162
+-24.656, 31.968, 63.267
+-23.926, 30.106, 59.116
+-23.195, 28.245, 54.651
+-22.464, 26.383, 49.786
+-21.733, 24.521, 44.392
+-21.003, 22.659, 38.245
+-20.272, 20.798, 30.898
+-19.541, 18.936, 21.135
+-18.899, 17.299, 0
+-18.899, 17.299, 0
+-11.591, -1.318, 0
+endData
+127
+100
+200
+-11.318, 46.295, -23.068, 52.075, -23.068, 52.075, -34.818, 57.856
+-34.818, 57.856, -26.858, 37.577, -26.858, 37.577, -18.899, 17.299
+#PATH.JERRYIO-DATA {"appVersion":"0.8.3","format":"LemLib v0.5","gc":{"robotWidth":18,"robotHeight":18,"robotIsHolonomic":false,"showRobot":true,"uol":2.54,"pointDensity":2,"controlMagnetDistance":0.7750015500031,"fieldImage":{"displayName":"V5RC 2025 - High Stakes","signature":"V5RC 2025 - High Stakes","origin":{"__type":"built-in"}},"coordinateSystem":"VEX Gaming Positioning System"},"paths":[{"segments":[],"pc":{"speedLimit":{"minLimit":{"value":0,"label":"0"},"maxLimit":{"value":127,"label":"127"},"step":1,"from":20,"to":100},"bentRateApplicableRange":{"minLimit":{"value":0,"label":"0"},"maxLimit":{"value":1,"label":"1"},"step":0.001,"from":0,"to":0.1},"maxDecelerationRate":127},"name":"Start - Backwards","uid":"UZNC8L50g7","lock":false,"visible":true},{"segments":[{"controls":[{"uid":"p9ODL9Edf0","x":-11.317911536887575,"y":46.29503399582879,"lock":false,"visible":true,"heading":350,"__type":"end-point"},{"uid":"5wvoho26kC","x":-34.817928793653465,"y":57.85552635601201,"lock":false,"visible":true,"heading":280,"__type":"end-point"}],"speedProfiles":[],"lookaheadKeyframes":[],"uid":"W5PxiH3xF2"},{"controls":[{"uid":"5wvoho26kC","x":-34.817928793653465,"y":57.85552635601201,"lock":false,"visible":true,"heading":280,"__type":"end-point"},{"uid":"zovHsxFsA1","x":-18.89856226487657,"y":17.299044961270884,"lock":false,"visible":true,"heading":0,"__type":"end-point"}],"speedProfiles":[],"lookaheadKeyframes":[],"uid":"OhXCSSYZWf"}],"pc":{"speedLimit":{"minLimit":{"value":0,"label":"0"},"maxLimit":{"value":127,"label":"127"},"step":1,"from":20,"to":100},"bentRateApplicableRange":{"minLimit":{"value":0,"label":"0"},"maxLimit":{"value":1,"label":"1"},"step":0.001,"from":0,"to":0.1},"maxDecelerationRate":127},"name":"End - Forwards","uid":"rhJqopcceP","lock":false,"visible":true}]}

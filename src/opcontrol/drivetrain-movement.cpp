@@ -8,7 +8,7 @@ void doubleStickArcadeControl() {
 	int rightX = Devices::controller.get_analog(pros::E_CONTROLLER_ANALOG_RIGHT_X);
 	leftY = static_cast<int>(leftY * Config::movementVelocityPercentage);
 	rightX = static_cast<int>(rightX * Config::turningVelocityPercentage);
-	Devices::chassis.arcade(leftY, rightX);
+	Devices::chassis.arcade(leftY, -rightX);
 }
 
 void drivetrainMovementController() {
