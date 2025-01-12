@@ -17,7 +17,7 @@ void tuneLateralPID() {
 void autonomousRunner() {
 	clearScreen();
 
-	constexpr AutonTypes autonType = BP;
+	constexpr AutonTypes autonType = TL;
 
 	short lineNumber = 0;
 
