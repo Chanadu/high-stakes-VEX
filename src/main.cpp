@@ -1,9 +1,9 @@
 #include "main.h"
 
 #include "autonomous/autonomous.hpp"
-#include "configuration.hpp"
-#include "devices.hpp"
 #include "opcontrol/opcontrol.hpp"
+#include "utils/configuration.hpp"
+#include "utils/devices.hpp"
 
 [[noreturn]] void controllerLinePrinting(void* param) {
 	while (true) {

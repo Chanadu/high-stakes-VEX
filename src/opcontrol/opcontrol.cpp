@@ -1,11 +1,11 @@
-#include "configuration.hpp"
-#include "devices.hpp"
+#include "opcontrol/opcontrol.hpp"
 #include "main.h"
 #include "opcontrol/device-controller.hpp"
 #include "opcontrol/drivetrain-movement.hpp"
-#include "screen-displays.hpp"
+#include "utils/configuration.hpp"
+#include "utils/screen-displays.hpp"
 
-[[noreturn]] void opcontrolRunner() {
+void opcontrolRunner() {
 	// pros::lcd::clear();
 	Config::controllerStrings[1] = "OP RUNNING";
 	while (true) {

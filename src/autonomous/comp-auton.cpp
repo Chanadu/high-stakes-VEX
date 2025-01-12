@@ -1,8 +1,7 @@
 #include "autonomous/comp-auton.hpp"
 #include "autonomous/autonomous.hpp"
-
-#include "configuration.hpp"
-#include "devices.hpp"
+#include "utils/configuration.hpp"
+#include "utils/devices.hpp"
 
 // ASSET(example_txt)
 // ASSET(example2_txt)
@@ -34,7 +33,6 @@ ASSET(BP4_txt)
 // ASSET(RPNH3_txt)
 // ASSET(RP4_txt)
 
-
 void runAuton(const AutonTypes autonType) {
 	using Devices::chassis;
 	using Devices::holderPiston;
@@ -56,28 +54,28 @@ void runAuton(const AutonTypes autonType) {
 
 	switch (autonType) {
 		case BP:
-		Devices::leftMotorGroup.move(-75);
-		Devices::rightMotorGroup.move(-75);
-		pros::delay(750);
-		Devices::leftMotorGroup.move(0);
-		Devices::rightMotorGroup.move(0);
-		holderPiston.retract();
-		intakeMotorGroup.move(-127);
-		
-		// // chassis.moveToPoint(24, 0, 5000, {.forwards = false}, true);   
-		// pros::delay(500);                                                                                                   
-		// holderPiston.retract();
-		// intakeMotorGroup.move(127);
+			Devices::leftMotorGroup.move(-75);
+			Devices::rightMotorGroup.move(-75);
+			pros::delay(750);
+			Devices::leftMotorGroup.move(0);
+			Devices::rightMotorGroup.move(0);
+			holderPiston.retract();
+			intakeMotorGroup.move(-127);
+
+			// // chassis.moveToPoint(24, 0, 5000, {.forwards = false}, true);
+			// pros::delay(500);
+			// holderPiston.retract();
+			// intakeMotorGroup.move(127);
 			// chassis.follow(autonAssets.at(BP)[0], 15, 2000, false, false);
 
 			// holderPiston.extend();
 			// intakeMotorGroup.move(127);
 
 			// chassis.follow(autonAssets.at(BP)[1], 15, 2000, true, false);
-			
+
 			// intakeMotorGroup.move(0);
 			// chassis.follow(autonAssets.at(BP)[2], 15, 2000, true, false);
-			
+
 			// holderPiston.extend();
 			// intakeMotorGroup.move(127);
 
@@ -85,50 +83,50 @@ void runAuton(const AutonTypes autonType) {
 			// intakeMotorGroup.move(0);
 			// // chassis.follow(autonAssets.at(RP)[1], 15, 2000, false, false);
 			// break;
-		// case BN:
-		// 	chassis.follow(autonAssets.at(BN)[0], 15, 2000, false, false);
-		// 	holderPiston.extend();
-		// 	chassis.follow(autonAssets.at(BN)[1], 15, 2000, true, false);
-		// 	intakeMotorGroup.move(127);
-		// 	chassis.follow(autonAssets.at(BN)[2], 15, 2000, true, false);
-		// 	chassis.follow(autonAssets.at(BN)[3], 15, 2000, true, false);
-		// 	intakeMotorGroup.move(0);
-		// 	// chassis.follow(autonAssets.at(RN)[1], 15, 2000, false, false);
-		// 	break;
-		// case RP:
-		// 	chassis.follow(autonAssets.at(RP)[0], 15, 2000, false, false);
+			// case BN:
+			// 	chassis.follow(autonAssets.at(BN)[0], 15, 2000, false, false);
+			// 	holderPiston.extend();
+			// 	chassis.follow(autonAssets.at(BN)[1], 15, 2000, true, false);
+			// 	intakeMotorGroup.move(127);
+			// 	chassis.follow(autonAssets.at(BN)[2], 15, 2000, true, false);
+			// 	chassis.follow(autonAssets.at(BN)[3], 15, 2000, true, false);
+			// 	intakeMotorGroup.move(0);
+			// 	// chassis.follow(autonAssets.at(RN)[1], 15, 2000, false, false);
+			// 	break;
+			// case RP:
+			// 	chassis.follow(autonAssets.at(RP)[0], 15, 2000, false, false);
 
-		// 	holderPiston.extend();
-		// 	intakeMotorGroup.move(127);
+			// 	holderPiston.extend();
+			// 	intakeMotorGroup.move(127);
 
-		// 	chassis.follow(autonAssets.at(RP)[1], 15, 2000, true, false);
-			
-		// 	intakeMotorGroup.move(0);
-		// 	chassis.follow(autonAssets.at(RP)[2], 15, 2000, true, false);
-			
-		// 	holderPiston.extend();
-		// 	intakeMotorGroup.move(127);
+			// 	chassis.follow(autonAssets.at(RP)[1], 15, 2000, true, false);
 
-		// 	chassis.follow(autonAssets.at(RP)[3], 15, 2000, true, false);
-		// 	intakeMotorGroup.move(0);
-		// 	// chassis.follow(autonAssets.at(RP)[1], 15, 2000, false, false);
-		// 	break;
-		// case RN:
-		// 	chassis.follow(autonAssets.at(RN)[0], 15, 2000, false, false);
-		// 	holderPiston.extend();
-		// 	chassis.follow(autonAssets.at(RN)[1], 15, 2000, true, false);
-		// 	intakeMotorGroup.move(127);
-		// 	chassis.follow(autonAssets.at(RN)[2], 15, 2000, true, false);
-		// 	chassis.follow(autonAssets.at(RN)[3], 15, 2000, true, false);
-		// 	intakeMotorGroup.move(0);
-		// 	// chassis.follow(autonAssets.at(RN)[1], 15, 2000, false, false);
-		// 	break;
-		// case TA:
-		// 	tuneAngularPID();
-		// 	break;
-		// case TL:
-		// 	tuneLateralPID();
-		// 	break;
+			// 	intakeMotorGroup.move(0);
+			// 	chassis.follow(autonAssets.at(RP)[2], 15, 2000, true, false);
+
+			// 	holderPiston.extend();
+			// 	intakeMotorGroup.move(127);
+
+			// 	chassis.follow(autonAssets.at(RP)[3], 15, 2000, true, false);
+			// 	intakeMotorGroup.move(0);
+			// 	// chassis.follow(autonAssets.at(RP)[1], 15, 2000, false, false);
+			// 	break;
+			// case RN:
+			// 	chassis.follow(autonAssets.at(RN)[0], 15, 2000, false, false);
+			// 	holderPiston.extend();
+			// 	chassis.follow(autonAssets.at(RN)[1], 15, 2000, true, false);
+			// 	intakeMotorGroup.move(127);
+			// 	chassis.follow(autonAssets.at(RN)[2], 15, 2000, true, false);
+			// 	chassis.follow(autonAssets.at(RN)[3], 15, 2000, true, false);
+			// 	intakeMotorGroup.move(0);
+			// 	// chassis.follow(autonAssets.at(RN)[1], 15, 2000, false, false);
+			// 	break;
+			// case TA:
+			// 	tuneAngularPID();
+			// 	break;
+			// case TL:
+			// 	tuneLateralPID();
+			// 	break;
 	}
 }
 

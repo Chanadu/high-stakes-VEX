@@ -1,4 +1,4 @@
-#include "configuration.hpp"
+#include "utils/configuration.hpp"
 #include "main.h"
 
 namespace Config {
@@ -48,7 +48,7 @@ lemlib::ControllerSettings lateralMovementController(10,   // ProportionalGain
 // );
 lemlib::ControllerSettings angularMovementController(2,	   // ProportionalGain
 													 0,	   // IntegralGain
-													 0,   // DerivativeGain
+													 0,	   // DerivativeGain
 													 0,	   // AntiWindup
 													 1,	   // SmallErrorRange
 													 100,  // SmallErrorRangeTimeout

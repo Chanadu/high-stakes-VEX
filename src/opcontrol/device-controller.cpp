@@ -1,6 +1,6 @@
 #include "opcontrol/device-controller.hpp"
-#include "configuration.hpp"
-#include "devices.hpp"
+#include "utils/configuration.hpp"
+#include "utils/devices.hpp"
 
 void intakeMotorControl() {
 	const int motorPower =
@@ -13,8 +13,10 @@ void intakeMotorControl() {
 	Config::controllerStrings[2] =
 		fmt::format("IT: {:.2} {:.2}", Devices::intakeMotorGroup.get_torque_all()[0],
 					Devices::intakeMotorGroup.get_torque_all()[1]);
-	pros::lcd::print(7, fmt::format("IT: {:.2} {:.2}", Devices::intakeMotorGroup.get_torque_all()[0],
-					Devices::intakeMotorGroup.get_torque_all()[1]).c_str());
+	pros::lcd::print(7,
+					 fmt::format("IT: {:.2} {:.2}", Devices::intakeMotorGroup.get_torque_all()[0],
+								 Devices::intakeMotorGroup.get_torque_all()[1])
+						 .c_str());
 }
 
 void armMotorControl() {

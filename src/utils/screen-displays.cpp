@@ -1,7 +1,7 @@
-#include "screen-displays.hpp"
-#include "configuration.hpp"
-#include "devices.hpp"
+#include "utils/screen-displays.hpp"
 #include "main.h"
+#include "utils/configuration.hpp"
+#include "utils/devices.hpp"
 
 void batteryDisplay(short& lineNumber) {
 	const double batteryPercentage = pros::battery::get_capacity();

@@ -1,6 +1,6 @@
-#include "devices.hpp"
-#include "configuration.hpp"
+#include "utils/devices.hpp"
 #include "main.h"
+#include "utils/configuration.hpp"
 
 namespace Devices {
 pros::Controller controller(pros::E_CONTROLLER_MASTER);
@@ -11,7 +11,7 @@ pros::Controller controller(pros::E_CONTROLLER_MASTER);
 
 pros::MotorGroup leftMotorGroup({1, -12, 3}, pros::MotorGears::blue);
 pros::MotorGroup rightMotorGroup({-4, 5, -8}, pros::MotorGears::blue);
- 
+
 pros::MotorGroup intakeMotorGroup({9, -10}, pros::MotorGears::red);
 pros::controller_digital_e_t intakeInButton = pros::E_CONTROLLER_DIGITAL_L2;
 pros::controller_digital_e_t intakeOutButton = pros::E_CONTROLLER_DIGITAL_L1;
@@ -60,7 +60,7 @@ lemlib::Chassis chassis(				//
 	&turnCurve							// steering curve
 );
 
-}  // namespace Devices 
+}  // namespace Devices
 void initializeDevices() {
 	pros::lcd::initialize();
 	// pros::screen::set_pen(pros::Color::white);

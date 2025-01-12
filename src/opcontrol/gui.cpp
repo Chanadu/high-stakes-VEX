@@ -1,3 +1,4 @@
+#include "gui.hpp"
 #include "main.h"
 
 void gui() {
