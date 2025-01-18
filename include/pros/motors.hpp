@@ -31,7 +31,7 @@
 namespace pros {
 inline namespace v5 {
 
-class Motor : public AbstractMotor, public Device {
+class arm : public AbstractMotor, public Device {
 	public:
 	/**
 	 * \addtogroup cpp-motors
@@ -71,10 +71,10 @@ class Motor : public AbstractMotor, public Device {
 	 * \endcode
 	 *
 	 */
-	Motor(const std::int8_t port, const pros::v5::MotorGears gearset = pros::v5::MotorGears::invalid,
+	arm(const std::int8_t port, const pros::v5::MotorGears gearset = pros::v5::MotorGears::invalid,
 	      const pros::v5::MotorUnits encoder_units = pros::v5::MotorUnits::invalid);
 
-	Motor(const Device& device) : Motor(device.get_port()){};
+	arm(const Device& device) : arm(device.get_port()){};
 
 	/// \name Motor movement functions
 	/// These functions allow programmers to make motors move
@@ -1499,7 +1499,7 @@ class Motor : public AbstractMotor, public Device {
 	 * }
 	 * \endcode
 	 */
-	static std::vector<Motor> get_all_devices();
+	static std::vector<arm> get_all_devices();
 
 	/**
 	 * gets the port number of the motor
@@ -2405,7 +2405,7 @@ namespace literals {
  * }
  * \endcode
  */
-const pros::Motor operator"" _mtr(const unsigned long long int m);
+const pros::arm operator"" _mtr(const unsigned long long int m);
 /**
  * Constructs a reversed Motor from a literal ending in _rmtr
  *
@@ -2419,7 +2419,7 @@ const pros::Motor operator"" _mtr(const unsigned long long int m);
  * }
  * \endcode
  */
-const pros::Motor operator"" _rmtr(const unsigned long long int m);
+const pros::arm operator"" _rmtr(const unsigned long long int m);
 }  // namespace literals
 }  // namespace v5
 }  // namespace pros
