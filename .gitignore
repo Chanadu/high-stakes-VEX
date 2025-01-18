@@ -19,4 +19,5 @@ ni
 .ccls-cache
 .idea
 
+compile_commands.json
 make.sh
