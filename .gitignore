@@ -18,3 +18,5 @@ ni
 .d/
 .ccls-cache
 .idea
+
+make.sh
