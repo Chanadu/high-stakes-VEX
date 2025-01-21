@@ -84,13 +84,13 @@ void baseNegative() {
 
 	chassis.pid_odom_set(
 		{
-			{{-29.991_in, 29.348_in, 315_deg}, rev, DRIVE_SPEED},
-			{{-33.807_in, 33.672_in, 315_deg}, rev, DRIVE_SPEED + 30},
-			{{-14.475_in, 37.487_in, 45_deg}, fwd, DRIVE_SPEED - 10},
+			{{-33.807_in, 33.672_in, 315_deg}, rev, DRIVE_SPEED},
+			{{-26.66_in, 25.665_in, 315_deg}, rev, DRIVE_SPEED + 30},
 			{{-23.632_in, 46.644_in, 315_deg}, fwd, DRIVE_SPEED},
-			{{-15.238_in, 50.714_in, 90_deg}, fwd, DRIVE_SPEED},
-			{{-34.316_in, 44.355_in, 330_deg}, rev, DRIVE_SPEED * 2},
-			{{-13.996_in, 7.128_in, 140_deg}, fwd, DRIVE_SPEED},
+			{{-14.475_in, 40.794_in, 80_deg}, rev, DRIVE_SPEED - 10},
+			{{-17.019_in, 54.53_in, 90_deg}, fwd, DRIVE_SPEED},
+			{{-28.465_in, 38.759_in, 90_deg}, fwd, DRIVE_SPEED + 30},
+			{{-8.84_in, 9.101_in, 145_deg}, fwd, DRIVE_SPEED},
 		},
 		true);
 
@@ -104,17 +104,20 @@ void baseNegative() {
 
 	intakeMotors.move(-100);
 
-	chassis.pid_wait_until_index(currentIndex++);  // 1
+	chassis.pid_wait_until_index(currentIndex++);  // 2
+
 
 	chassis.pid_wait_until_index(currentIndex++);  // 2
 
 	chassis.pid_wait_until_index(currentIndex++);  // 3
 
+	chassis.pid_wait_until_index(currentIndex++);  // 4
+
 	intakeMotors.move(0);
 
-	chassis.pid_wait_until_index(currentIndex++);  // 4
+	chassis.pid_wait_until_index(currentIndex++);  // 5
 
-	chassis.pid_wait_until_index(currentIndex++);  // 4
+	chassis.pid_wait_until_index(currentIndex++);  // 6
 
 	chassis.pid_wait();
 

@@ -100,7 +100,6 @@ void baseNegative() {
 	chassis.pid_wait_until_index(currentIndex++);  // 1
 
 	holderPiston.retract();
-	holderPiston.retract();
 
 	intakeMotors.move(-100);
 

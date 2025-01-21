@@ -71,8 +71,9 @@ void autonomous() {
 
 	// drive_forward();
 	// turn_right();
-	redPositive();
-	// redNegative();
+	// redPositive();
+	
+	redNegative();
 	// bluePositive();
 	// blueNegative();
 
