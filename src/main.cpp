@@ -172,7 +172,7 @@ void ez_template_extras() {
 void intakeMotorControl() {
 	pros::controller_digital_e_t intakeInButton = pros::E_CONTROLLER_DIGITAL_R2;
 	pros::controller_digital_e_t intakeOutButton = pros::E_CONTROLLER_DIGITAL_R1;
-	double intakeVelocity = 1.0;
+	double intakeVelocity = 0.75;
 
 	const int motorPower = static_cast<int>((master.get_digital(intakeInButton) - master.get_digital(intakeOutButton)) * 127 * intakeVelocity);
 	intakeMotors.move(motorPower);
@@ -195,9 +195,9 @@ void holderPistonControl() {
 }
 
 void opcontrol() {
-	chassis.drive_brake_set(MOTOR_BRAKE_COAST);
 
 	while (true) {
+	chassis.drive_brake_set(MOTOR_BRAKE_COAST);
 		ez_template_extras();
 		chassis.opcontrol_arcade_standard(ez::SPLIT);  // Standard split arcade
 		intakeMotorControl();
