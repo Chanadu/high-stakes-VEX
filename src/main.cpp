@@ -72,7 +72,7 @@ void autonomous() {
 	// drive_forward();
 	// turn_right();
 	// redPositive();
-	
+
 	redNegative();
 	// bluePositive();
 	// blueNegative();
@@ -195,9 +195,8 @@ void holderPistonControl() {
 }
 
 void opcontrol() {
-
 	while (true) {
-	chassis.drive_brake_set(MOTOR_BRAKE_COAST);
+		chassis.drive_brake_set(MOTOR_BRAKE_COAST);
 		ez_template_extras();
 		chassis.opcontrol_arcade_standard(ez::SPLIT);  // Standard split arcade
 		intakeMotorControl();
